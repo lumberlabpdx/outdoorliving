@@ -65,9 +65,9 @@ function Index() {
   }, []);
 
   return (
-    <main className="relative flex h-dvh w-full overflow-hidden bg-background font-sans text-foreground">
-      {/* Left */}
-      <section className="relative z-10 flex w-full flex-col px-8 py-7 md:w-1/2 md:px-10 lg:px-16">
+    <main className="relative flex min-h-dvh w-full flex-col overflow-x-hidden bg-background font-sans text-foreground md:h-dvh md:flex-row md:overflow-hidden">
+      {/* Brand, hero, and navigation */}
+      <section className="relative z-10 flex w-full flex-col px-8 py-7 md:h-full md:w-1/2 md:px-10 lg:px-16">
         <div className="flex items-center gap-3">
           <img
             src={logo}
@@ -87,7 +87,7 @@ function Index() {
           </div>
         </div>
 
-        <div className="mt-auto mb-auto">
+        <div className="mt-12 mb-10 md:mt-auto md:mb-auto">
           <p className="mb-3 font-display text-xs tracking-[0.3em] text-accent uppercase">
             Portland, Oregon
           </p>
@@ -119,8 +119,8 @@ function Index() {
         </nav>
       </section>
 
-      {/* Right carousel */}
-      <section className="absolute inset-0 md:relative md:flex-1">
+      {/* Rotating photo carousel */}
+      <section className="relative h-[55vh] min-h-[360px] w-full shrink-0 bg-background md:h-auto md:min-h-0 md:flex-1">
         {slides.map((s, n) => (
           <div
             key={n}
@@ -145,15 +145,17 @@ function Index() {
         </p>
       </section>
 
-      {/* Drawer */}
+      {/* Drawer overlay */}
       <div
         onClick={() => setOpen(null)}
-        className={`absolute inset-0 z-20 bg-overlay transition-opacity duration-500 ${
+        className={`fixed inset-0 z-20 bg-overlay transition-opacity duration-500 ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       />
+
+      {/* Drawer */}
       <aside
-        className={`absolute top-0 left-0 z-30 flex h-full w-full max-w-md flex-col border-r border-border bg-card px-10 py-12 transition-transform duration-500 ease-out ${
+        className={`fixed top-0 left-0 z-30 flex h-dvh w-full max-w-md flex-col border-r border-border bg-card px-10 py-12 transition-transform duration-500 ease-out ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -178,10 +180,13 @@ function Index() {
           </>
         ) : (
           <>
-            <h2 className="mt-6 font-display text-3xl font-light tracking-[0.2em] uppercase">
+            <h2
+              className="mt-6 font-display text-3xl font-light tracking-[0.2em] uppercase"
+              style={{ color: "#708238" }}
+            >
               {open}
             </h2>
-            <span className="mt-4 h-px w-12 bg-primary" />
+            <span className="mt-4 h-px w-12" style={{ backgroundColor: "#708238" }} />
           </>
         )}
 
