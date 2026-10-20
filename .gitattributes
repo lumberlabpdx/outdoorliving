@@ -1,0 +1,2 @@
+# Keep LF line endings in the working tree on every OS (Prettier and ESLint expect LF)
+* text=auto eol=lf
