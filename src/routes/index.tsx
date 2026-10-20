@@ -68,38 +68,41 @@ function Index() {
     <main className="relative flex min-h-dvh w-full flex-col overflow-x-hidden bg-background font-sans text-foreground md:h-dvh md:flex-row md:overflow-hidden">
       {/* Brand, hero, and navigation */}
       <section className="relative z-10 flex w-full flex-col px-8 py-7 md:h-full md:w-1/2 md:px-10 lg:px-16">
-        <div className="flex items-center gap-3">
-          <img
-            src={logo}
-            alt=""
-            aria-hidden="true"
-            width={48}
-            height={48}
-            className="h-12 w-12 shrink-0 object-contain"
-          />
-          <div className="leading-none">
-            <p className="font-display text-2xl font-medium tracking-[0.16em] text-accent">
-              Lumber Lab
-            </p>
-            <p className="mt-2 font-display text-[0.62rem] tracking-[0.28em] text-primary uppercase">
-              Outdoor Construction
-            </p>
+        <div>
+          <div className="flex items-center gap-3">
+            <img
+              src={logo}
+              alt=""
+              aria-hidden="true"
+              width={48}
+              height={48}
+              className="h-12 w-12 shrink-0 object-contain"
+            />
+            <div className="leading-none">
+              <p className="font-display text-2xl font-medium tracking-[0.16em] text-accent">
+                Lumber Lab
+              </p>
+              <p className="mt-2 font-display text-[0.62rem] tracking-[0.28em] text-primary uppercase">
+                Outdoor Construction
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-2.5 font-display text-[0.62rem] leading-tight tracking-[0.16em] text-muted-foreground uppercase">
+            <p>serving the greater Portland metropolitan area</p>
+            <p>&amp; southwest Washington</p>
           </div>
         </div>
 
         <div className="mt-12 mb-10 md:mt-auto md:mb-auto">
-          <p className="mb-3 font-display text-xs tracking-[0.3em] text-accent uppercase">
-            Portland, Oregon
-          </p>
-          <h1 className="font-display text-3xl leading-[1.1] font-light tracking-tight text-primary md:text-4xl lg:text-[2.6rem]">
-            Outdoor living,
-            <br />
-            crafted to last.
+          <h1 className="font-display text-3xl leading-[1.1] font-light tracking-tight md:text-4xl lg:text-[2.6rem]">
+            <span className="block" style={{ color: "#708238" }}>
+              Outdoor living,
+            </span>
+            <span className="block text-primary">
+              crafted to last.
+            </span>
           </h1>
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Bespoke decks, pergolas, kitchens and fire features — designed and built for the Pacific
-            Northwest.
-          </p>
         </div>
 
         <nav className="flex w-full max-w-xs flex-col gap-2.5">
@@ -155,7 +158,7 @@ function Index() {
 
       {/* Drawer */}
       <aside
-        className={`fixed top-0 left-0 z-30 flex h-dvh w-full max-w-md flex-col border-r border-border bg-card px-10 py-12 transition-transform duration-500 ease-out ${
+        className={`fixed top-0 left-0 z-30 flex h-dvh w-full max-w-md flex-col border-r border-border bg-card px-8 pt-5 pb-5 transition-transform duration-500 ease-out md:px-10 md:pt-6 md:pb-5 ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -171,26 +174,38 @@ function Index() {
           <>
             <img
               src={lockup}
-              alt="Lumber Lab — Outdoor Construction"
+              alt="Lumber Lab Outdoor Construction"
               width={1110}
               height={1110}
-              className="mx-auto mt-2 h-40 w-auto object-contain md:h-48 lg:h-56"
+              className="mx-auto mt-2 h-36 w-auto object-contain md:h-44"
             />
-            <span className="mx-auto mt-4 h-px w-16 bg-primary" />
+            <span className="mx-auto mt-3 h-px w-16 bg-primary" />
+          </>
+        ) : open === "contact" ? (
+          <>
+            <h2
+              className="mt-2 font-display text-lg sm:text-xl font-light tracking-[0.14em] uppercase whitespace-nowrap"
+              style={{ color: "#708238" }}
+            >
+              get in touch today
+            </h2>
+            <p className="mt-0.5 font-display text-[0.68rem] sm:text-xs font-medium tracking-[0.18em] text-primary uppercase whitespace-nowrap">
+              for a free quote/consultation
+            </p>
           </>
         ) : (
           <>
             <h2
-              className="mt-6 font-display text-3xl font-light tracking-[0.2em] uppercase"
+              className="mt-3 font-display text-2xl sm:text-3xl font-light tracking-[0.2em] uppercase"
               style={{ color: "#708238" }}
             >
               {open}
             </h2>
-            <span className="mt-4 h-px w-12" style={{ backgroundColor: "#708238" }} />
+            <span className="mt-2 h-px w-12" style={{ backgroundColor: "#708238" }} />
           </>
         )}
 
-        <div className="mt-6 flex-1 overflow-y-auto text-sm leading-relaxed text-muted-foreground">
+        <div className="mt-3 flex-1 overflow-y-auto text-sm leading-relaxed text-muted-foreground">
           {open === "about" && (
             <div className="space-y-4">
               <p>
@@ -206,7 +221,7 @@ function Index() {
           )}
 
           {open === "services" && (
-            <ul className="space-y-6">
+            <ul className="space-y-5">
               {services.map(([t, d]) => (
                 <li key={t}>
                   <p className="font-display text-lg font-medium tracking-wide text-foreground">
@@ -219,24 +234,28 @@ function Index() {
           )}
 
           {open === "contact" && (
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-1.5">
+              <div className="grid grid-cols-2 gap-3 pt-3">
                 <a
                   href="tel:+15035550142"
-                  className="rounded-md border border-primary bg-primary/10 px-3 py-2 text-center font-display text-sm font-medium tracking-[0.18em] text-primary uppercase transition-colors duration-300 hover:bg-primary/20 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                  className="rounded-md border border-primary bg-primary/10 px-3 py-1.5 text-center font-display text-sm font-medium tracking-[0.18em] text-primary uppercase transition-colors duration-300 hover:bg-primary/20 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                 >
                   Call us
                 </a>
-
                 <a
                   href="sms:+15035550142"
-                  className="rounded-md border border-primary bg-primary/10 px-3 py-2 text-center font-display text-sm font-medium tracking-[0.18em] text-primary uppercase transition-colors duration-300 hover:bg-primary/20 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+                  className="rounded-md border border-primary bg-primary/10 px-3 py-1.5 text-center font-display text-sm font-medium tracking-[0.18em] text-primary uppercase transition-colors duration-300 hover:bg-primary/20 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                 >
                   or text
                 </a>
               </div>
 
-              <ContactForm />
+              <div className="pt-1.5">
+                <p className="mb-1.5 text-center font-display text-[0.65rem] tracking-[0.18em] text-muted-foreground uppercase">
+                  or request a call back below
+                </p>
+                <ContactForm />
+              </div>
             </div>
           )}
         </div>
