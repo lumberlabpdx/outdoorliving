@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: get deployed, nerd
 
 on:
   push:
