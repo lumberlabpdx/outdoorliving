@@ -183,7 +183,7 @@ export function ContactForm({ onClose }: { onClose: () => void }) {
         {status === "failed" && <p className="text-center text-xs text-primary">{message}</p>}
 
         <p className="text-center text-[0.65rem] text-muted-foreground">
-          Website and logo made with love by Dom.
+          We will get back to you as soon as possible.
         </p>
       </form>
     </div>

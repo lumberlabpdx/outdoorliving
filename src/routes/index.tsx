@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Star, X } from "lucide-react";
-import c1 from "@/assets/c1.jpg";
-import c2 from "@/assets/c2.jpg";
-import c3 from "@/assets/c3.jpg";
+import tree from "@/assets/tree.jpg";
+import stamp from "@/assets/stamp.jpg";
+import deck from "@/assets/deck.jpg";
 import c4 from "@/assets/c4.jpg";
 import logo from "@/assets/lumber-lab-logo.png";
 import lockup from "@/assets/lumber-lab-lockup.png";
@@ -34,39 +34,103 @@ export const Route = createFileRoute("/")({
 
 const slides = [
   {
-    src: c1,
-    label: "Cedar pavilion & fire lounge",
+    src: tree,
+    label: "Forest treehouse retreat",
     location: "Sellwood",
-    review: "These reviews, locations, and pictures are placeholders and are not real.",
+    review: "Sample project review for a Sellwood treehouse.",
+    client: "John Doe",
   },
   {
-    src: c2,
-    label: "Covered outdoor kitchen",
+    src: stamp,
+    label: "Stamped stone patio & pergola",
     location: "Mount Tabor",
-    review: "These reviews, locations, and pictures are placeholders and are not real.",
+    review: "Review for a stamped concrete job in Mt. Tabor.",
+    client: "Amanda R.",
   },
   {
-    src: c3,
-    label: "Hillside deck & spa",
+    src: deck,
+    label: "Hardwood deck & view stairs",
     location: "Lents",
-    review: "These reviews, locations, and pictures are placeholders and are not real.",
+    review: "A project done in the Lents neighborhood.",
+    client: "Patrick S.",
   },
   {
     src: c4,
     label: "Louvered pergola & garden",
     location: "Northwest",
     review: "These reviews, locations, and pictures are placeholders and are not real.",
+    client: "Client Name",
   },
 ];
 
 type Panel = "about" | "services" | "contact" | null;
 
-const services = [
-  ["Decks & Terraces", "Hardwood, cedar and composite builds made for Northwest weather."],
-  ["Pergolas & Covers", "Timber and louvered steel structures for year-round use."],
-  ["Outdoor Kitchens", "Stone, steel and built-in appliances, designed to cook and host."],
-  ["Fire & Water", "Fire pits, linear fireplaces, spas and water features."],
-  ["Lighting & Landscape", "Warm low-voltage lighting and custom gardens."],
+const services: [string, string[]][] = [
+  [
+    "Decks & Railings",
+    [
+      "Cedar, hardwood & composite decks",
+      "Multi-level & hillside decks",
+      "Rooftop decks",
+      "Stairs, landings & built-in benches",
+      "Cable, glass & metal railings",
+      "Under-deck drainage",
+      "Resurfacing & replacement",
+    ],
+  ],
+  [
+    "Patios & Hardscape",
+    [
+      "Stamped concrete, paver & flagstone patios",
+      "Walkways & garden paths",
+      "Retaining & seat walls",
+      "Outdoor steps",
+      "Fencing & gates",
+    ],
+  ],
+  [
+    "Pergolas & Covers",
+    [
+      "Timber & louvered pergolas",
+      "Covered patios & patio roofs",
+      "Pavilions & gazebos",
+      "Arbors, trellises & privacy screens",
+      "Heaters, fans & retractable shades",
+    ],
+  ],
+  [
+    "Garden Structures",
+    ["Treehouses", "Backyard studios & offices", "Saunas", "Garden & potting sheds"],
+  ],
+  [
+    "Outdoor Kitchens",
+    [
+      "Built-in grill islands",
+      "Full kitchens with sink & fridge",
+      "Pizza ovens & smokers",
+      "Outdoor bars & dining areas",
+    ],
+  ],
+  [
+    "Fire & Water",
+    [
+      "Fire pits & fire tables",
+      "Outdoor fireplaces",
+      "Hot tub & spa decks",
+      "Cold plunges & outdoor showers",
+      "Ponds & water features",
+    ],
+  ],
+  [
+    "Lighting & Landscape",
+    [
+      "Path, step & rail lighting",
+      "String & café lights",
+      "Raised beds & built-in planters",
+      "Landscaping & irrigation",
+      "Privacy plantings",
+    ],
+  ],
 ];
 
 function Index() {
@@ -119,8 +183,8 @@ function Index() {
           </div>
 
           <div className="mt-2.5 font-display text-[0.62rem] leading-tight tracking-[0.16em] text-muted-foreground uppercase">
-            <p>OR CCB# 626435</p>
-            <p>WA L&amp;I# WALUML549921</p>
+            <p>OR CCB# 000000</p>
+            <p>WA L&amp;I# LUMLAB000000</p>
           </div>
         </div>
 
@@ -128,12 +192,14 @@ function Index() {
         <div className="mt-8 mb-10 md:mt-auto md:mb-auto md:pb-[6vh]">
           <h1 className="font-display text-3xl leading-[1.1] font-light tracking-tight md:text-4xl lg:text-[2.6rem]">
             <span className="block" style={{ color: "#708238" }}>
-              outdoor living
+              handcrafted
             </span>
-            <span className="block text-primary">for your backyard</span>
+            <span className="block text-primary">outdoor spaces</span>
           </h1>
           <p className="mt-3 text-xs text-muted-foreground">
-            This website is currently under development by Dom.
+            Developed and maintained by Dom Saint P.
+            <br />
+            Work in progress.
           </p>
         </div>
 
@@ -152,6 +218,7 @@ function Index() {
             </button>
           ))}
         </nav>
+        <p className="mt-3 text-xs text-muted-foreground">© Lumber Lab Outdoor Construction</p>
       </section>
 
       {/* Rotating photo carousel */}
@@ -185,17 +252,20 @@ function Index() {
               n === i ? "opacity-100" : "pointer-events-none opacity-0"
             }`}
           >
-            <blockquote className="text-sm leading-relaxed text-muted-foreground">
+            <blockquote className="text-sm leading-relaxed text-foreground">
               “{s.review}”
             </blockquote>
-            <div role="img" aria-label="5 out of 5 stars" className="mt-3 flex gap-1">
-              {Array.from({ length: 5 }, (_, k) => (
-                <Star
-                  key={k}
-                  aria-hidden="true"
-                  className="h-3.5 w-3.5 fill-primary text-primary"
-                />
-              ))}
+            <div className="mt-3 flex items-center justify-between gap-3">
+              <div role="img" aria-label="5 out of 5 stars" className="flex gap-1">
+                {Array.from({ length: 5 }, (_, k) => (
+                  <Star
+                    key={k}
+                    aria-hidden="true"
+                    className="h-3.5 w-3.5 fill-primary text-primary"
+                  />
+                ))}
+              </div>
+              <figcaption className="text-xs text-primary">— {s.client}</figcaption>
             </div>
           </figure>
         ))}
@@ -251,15 +321,12 @@ function Index() {
             {closeButton("mt-1 shrink-0")}
           </div>
         ) : (
-          <>
-            <h2
-              className="mt-3 font-display text-2xl sm:text-3xl font-light tracking-[0.2em] uppercase"
-              style={{ color: "#708238" }}
-            >
-              {open}
-            </h2>
-            <span className="mt-2 h-px w-12" style={{ backgroundColor: "#708238" }} />
-          </>
+          <h2
+            className="mt-3 font-display text-2xl sm:text-3xl font-light tracking-[0.2em] uppercase"
+            style={{ color: "#708238" }}
+          >
+            {open}
+          </h2>
         )}
 
         {/* Keyed by panel so each one starts fresh: scrolled to the top, with an empty contact form */}
@@ -269,20 +336,23 @@ function Index() {
         >
           {open === "about" && (
             <div className="space-y-2.5 sm:space-y-3.5">
-              <p>Lumber Lab Outdoor Construction.</p>
-              <p>This website is a work in progress and made with love by Dom.</p>
+              <p>This is a labor of love.</p>
+              <p>Southeast.</p>
               <p className="font-display text-accent">Licensed · Bonded · Insured</p>
             </div>
           )}
 
           {open === "services" && (
-            <ul className="space-y-5">
-              {services.map(([t, d]) => (
+            // Fixed at 12px on every screen size to keep scrolling to a minimum
+            <ul className="space-y-3 text-xs leading-normal">
+              {services.map(([t, items]) => (
                 <li key={t}>
-                  <p className="font-display text-lg font-medium tracking-wide text-foreground">
-                    {t}
-                  </p>
-                  <p className="mt-1">{d}</p>
+                  <p className="font-display text-sm font-medium tracking-wide text-primary">{t}</p>
+                  <ul className="mt-0.5 list-disc pl-4 marker:text-accent">
+                    {items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
                 </li>
               ))}
             </ul>
@@ -298,9 +368,9 @@ function Index() {
         {(open === "about" || open === "services") && (
           <button
             onClick={() => setOpen("contact")}
-            className="mt-5 h-12.5 self-center rounded-md border border-accent bg-accent px-8 font-display text-sm font-medium tracking-[0.25em] text-background uppercase transition-colors duration-300 hover:border-primary hover:bg-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+            className="mt-5 h-12.5 w-full rounded-md border border-accent bg-accent px-4 font-display text-sm font-medium tracking-[0.25em] text-background uppercase transition-colors duration-300 hover:border-primary hover:bg-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
           >
-            get in touch
+            click to get in touch
           </button>
         )}
       </aside>
