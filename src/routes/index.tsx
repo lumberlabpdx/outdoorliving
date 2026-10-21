@@ -12,20 +12,18 @@ import { ContactForm } from "@/components/contact-form";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lumber Lab Outdoor Construction for the Pacific Northwest" },
+      { title: "Lumber Lab | Portland, OR" },
       {
         name: "description",
-        content:
-          "Custom decks, pergolas, outdoor kitchens and fire features built in Portland, Oregon.",
+        content: "Custom, handcrafted outdoor living spaces.",
       },
       {
         property: "og:title",
-        content: "Lumber Lab Outdoor Construction for the Pacific Northwest",
+        content: "Lumber Lab | Portland, OR",
       },
       {
         property: "og:description",
-        content:
-          "Custom decks, pergolas, outdoor kitchens and fire features built in Portland, Oregon.",
+        content: "Custom, handcrafted outdoor living spaces.",
       },
     ],
   }),
