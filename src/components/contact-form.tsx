@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
+import { ArrowUpRight, Check, MessageSquare, Phone } from "lucide-react";
 import { contactSchema } from "@/lib/contact-schema";
 import { requestCallback } from "@/lib/contact";
 
@@ -9,13 +10,23 @@ type Values = Record<Field, string>;
 
 const empty: Values = { name: "", phone: "", projectDescription: "" };
 
+const PHONE = "+15035550142";
+
 const inputClass =
-  "w-full rounded-md border border-accent/45 bg-background/40 px-3 py-1.5 text-sm text-foreground " +
+  "w-full rounded-md border border-accent/45 bg-background/40 px-3 text-sm text-foreground " +
   "placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none";
 
 const labelClass = "font-display text-[0.6rem] tracking-[0.22em] text-accent uppercase";
 
-export function ContactForm() {
+// Same look as the About / Services / Contact nav buttons: solid olive, gold on hover
+const buttonClass =
+  "rounded-md border border-accent bg-accent font-display text-sm font-medium tracking-[0.25em] text-background uppercase " +
+  "transition-colors duration-300 hover:border-primary hover:bg-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none";
+
+const quickContactClass = `flex h-12.5 items-center justify-center gap-2 px-3 ${buttonClass}`;
+
+// The whole contact drawer body: call/text links, then the callback form (or its thank-you).
+export function ContactForm({ onClose }: { onClose: () => void }) {
   const [values, setValues] = useState<Values>(empty);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "failed">("idle");
@@ -62,79 +73,119 @@ export function ContactForm() {
 
   if (status === "sent") {
     return (
-      <p className="font-display text-sm leading-relaxed tracking-wide text-primary">
-        Thank you — your request is in. We'll call you back shortly.
-      </p>
+      <div role="status" className="mt-[18vh] grid gap-4">
+        <span className="grid h-13 w-13 place-items-center rounded-md border border-primary bg-primary/10 text-primary">
+          <Check aria-hidden="true" className="h-5 w-5" />
+        </span>
+        <h3
+          className="font-display text-2xl font-light tracking-[0.2em] uppercase sm:text-3xl"
+          style={{ color: "#708238" }}
+        >
+          Thank you.
+        </h3>
+        <p>Your request is in. We'll call you back shortly.</p>
+        <button type="button" onClick={onClose} className={`mt-3.5 w-fit px-4 py-2 ${buttonClass}`}>
+          Back to projects
+        </button>
+      </div>
     );
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-3">
-      <div>
-        <label htmlFor="cf-name" className={labelClass}>
-          Name
-        </label>
-        <input
-          id="cf-name"
-          name="name"
-          type="text"
-          autoComplete="name"
-          value={values.name}
-          onChange={onChange("name")}
-          aria-invalid={Boolean(errors.name)}
-          placeholder="Your name"
-          className={`mt-1 ${inputClass}`}
-        />
-        {errors.name && <p className="mt-1 text-xs text-primary">{errors.name}</p>}
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <a href={`tel:${PHONE}`} className={quickContactClass}>
+          <Phone aria-hidden="true" className="h-3.5 w-3.5" />
+          call us
+        </a>
+        <a href={`sms:${PHONE}`} className={quickContactClass}>
+          <MessageSquare aria-hidden="true" className="h-3.5 w-3.5" />
+          or text
+        </a>
       </div>
 
-      <div>
-        <label htmlFor="cf-phone" className={labelClass}>
-          Phone Number
-        </label>
-        <input
-          id="cf-phone"
-          name="phone"
-          type="tel"
-          inputMode="tel"
-          autoComplete="tel"
-          value={values.phone}
-          onChange={onChange("phone")}
-          aria-invalid={Boolean(errors.phone)}
-          placeholder="(503) 555-0142"
-          className={`mt-1 ${inputClass}`}
-        />
-        {errors.phone && <p className="mt-1 text-xs text-primary">{errors.phone}</p>}
+      <div className="flex items-center gap-3">
+        <span className="h-px flex-1 bg-border" />
+        <p className="font-display text-[0.65rem] tracking-[0.18em] text-muted-foreground uppercase">
+          or request a call back below
+        </p>
+        <span className="h-px flex-1 bg-border" />
       </div>
 
-      <div>
-        <label htmlFor="cf-desc" className={labelClass}>
-          Project Description
-        </label>
-        <textarea
-          id="cf-desc"
-          name="projectDescription"
-          rows={3}
-          value={values.projectDescription}
-          onChange={onChange("projectDescription")}
-          aria-invalid={Boolean(errors.projectDescription)}
-          placeholder="Tell us what you'd like to build"
-          className={`mt-1 resize-none ${inputClass}`}
-        />
-        {errors.projectDescription && (
-          <p className="mt-1 text-xs text-primary">{errors.projectDescription}</p>
-        )}
-      </div>
+      <form onSubmit={onSubmit} noValidate className="grid gap-3 sm:gap-4.5">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="cf-name" className={labelClass}>
+              Name
+            </label>
+            <input
+              id="cf-name"
+              name="name"
+              type="text"
+              autoComplete="name"
+              value={values.name}
+              onChange={onChange("name")}
+              aria-invalid={Boolean(errors.name)}
+              placeholder="Your name"
+              className={`h-11.25 ${inputClass}`}
+            />
+            {errors.name && <p className="text-xs text-primary">{errors.name}</p>}
+          </div>
 
-      <button
-        type="submit"
-        disabled={status === "sending"}
-        className="w-full rounded-md border border-primary bg-primary/10 px-4 py-2 font-display text-sm font-medium tracking-[0.25em] text-primary uppercase transition-colors duration-300 hover:bg-primary/20 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none disabled:opacity-50"
-      >
-        {status === "sending" ? "Sending…" : "Request a callback"}
-      </button>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="cf-phone" className={labelClass}>
+              Phone Number
+            </label>
+            <input
+              id="cf-phone"
+              name="phone"
+              type="tel"
+              inputMode="tel"
+              autoComplete="tel"
+              value={values.phone}
+              onChange={onChange("phone")}
+              aria-invalid={Boolean(errors.phone)}
+              placeholder="(503) 555-0142"
+              className={`h-11.25 ${inputClass}`}
+            />
+            {errors.phone && <p className="text-xs text-primary">{errors.phone}</p>}
+          </div>
+        </div>
 
-      {status === "failed" && <p className="text-xs text-primary">{message}</p>}
-    </form>
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="cf-desc" className={labelClass}>
+            Project Description
+          </label>
+          <textarea
+            id="cf-desc"
+            name="projectDescription"
+            rows={4}
+            value={values.projectDescription}
+            onChange={onChange("projectDescription")}
+            aria-invalid={Boolean(errors.projectDescription)}
+            placeholder="Tell us what you'd like to build"
+            className={`resize-none py-2 ${inputClass}`}
+          />
+          {errors.projectDescription && (
+            <p className="text-xs text-primary">{errors.projectDescription}</p>
+          )}
+        </div>
+
+        <button
+          type="submit"
+          disabled={status === "sending"}
+          className={`mt-1 flex h-12.5 w-full items-center justify-between px-4 disabled:opacity-50 ${buttonClass}`}
+        >
+          {status === "sending" ? "Sending…" : "Request a callback"}
+          <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+        </button>
+
+        {status === "failed" && <p className="text-center text-xs text-primary">{message}</p>}
+
+        <p className="text-center text-[0.65rem] text-muted-foreground">
+          Website and logo made with love by Dom.
+        </p>
+      </form>
+    </div>
   );
 }

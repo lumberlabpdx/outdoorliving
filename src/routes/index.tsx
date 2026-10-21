@@ -66,7 +66,7 @@ const services = [
   ["Pergolas & Covers", "Timber and louvered steel structures for year-round use."],
   ["Outdoor Kitchens", "Stone, steel and built-in appliances, designed to cook and host."],
   ["Fire & Water", "Fire pits, linear fireplaces, spas and water features."],
-  ["Lighting & Landscape", "Warm low-voltage lighting and native plantings."],
+  ["Lighting & Landscape", "Warm low-voltage lighting and custom gardens."],
 ];
 
 function Index() {
@@ -83,6 +83,16 @@ function Index() {
     window.addEventListener("keydown", k);
     return () => window.removeEventListener("keydown", k);
   }, []);
+
+  const closeButton = (className: string) => (
+    <button
+      onClick={() => setOpen(null)}
+      aria-label="Close"
+      className={`${className} text-muted-foreground transition-colors hover:text-primary`}
+    >
+      <X className="h-5 w-5" />
+    </button>
+  );
 
   return (
     <main className="relative flex min-h-dvh w-full flex-col overflow-x-hidden bg-background font-sans text-foreground md:h-dvh md:flex-row md:overflow-hidden">
@@ -114,13 +124,17 @@ function Index() {
           </div>
         </div>
 
-        <div className="mt-12 mb-10 md:mt-auto md:mb-auto">
+        {/* The bottom padding lifts the centered heading a little above the middle */}
+        <div className="mt-8 mb-10 md:mt-auto md:mb-auto md:pb-[6vh]">
           <h1 className="font-display text-3xl leading-[1.1] font-light tracking-tight md:text-4xl lg:text-[2.6rem]">
             <span className="block" style={{ color: "#708238" }}>
               outdoor living
             </span>
             <span className="block text-primary">for your backyard</span>
           </h1>
+          <p className="mt-3 text-xs text-muted-foreground">
+            This website is currently under development by Dom.
+          </p>
         </div>
 
         <nav className="flex w-full max-w-xs flex-col gap-2.5">
@@ -206,13 +220,7 @@ function Index() {
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <button
-          onClick={() => setOpen(null)}
-          aria-label="Close"
-          className="self-end text-muted-foreground transition-colors hover:text-primary"
-        >
-          <X className="h-5 w-5" />
-        </button>
+        {open !== "contact" && closeButton("self-end")}
 
         {open === "about" ? (
           <>
@@ -226,17 +234,22 @@ function Index() {
             <span className="mx-auto mt-2 h-px w-16 bg-primary" />
           </>
         ) : open === "contact" ? (
-          <>
-            <h2
-              className="mt-2 font-display text-lg sm:text-xl font-light tracking-[0.14em] uppercase whitespace-nowrap"
-              style={{ color: "#708238" }}
-            >
-              click to call or text
-            </h2>
-            <p className="mt-0.5 font-display text-[0.68rem] sm:text-xs font-medium tracking-[0.18em] text-primary uppercase whitespace-nowrap">
-              for a free quote/consultation
-            </p>
-          </>
+          // Heading on the left, close button on the right in the same row
+          // Both lines step down a size below 360px so the close button still fits beside them
+          <div className="flex items-start justify-between gap-2">
+            <div>
+              <h2
+                className="font-display text-base min-[360px]:text-lg sm:text-xl font-light tracking-[0.14em] uppercase whitespace-nowrap"
+                style={{ color: "#708238" }}
+              >
+                click to call or text
+              </h2>
+              <p className="mt-0.5 font-display text-[0.6rem] min-[360px]:text-[0.68rem] sm:text-xs font-medium tracking-[0.18em] text-primary uppercase whitespace-nowrap">
+                for a free quote/consultation
+              </p>
+            </div>
+            {closeButton("mt-1 shrink-0")}
+          </div>
         ) : (
           <>
             <h2
@@ -249,15 +262,14 @@ function Index() {
           </>
         )}
 
-        <div className="mt-2.5 flex-1 overflow-y-auto text-xs sm:text-sm leading-relaxed text-muted-foreground">
+        {/* Keyed by panel so each one starts fresh: scrolled to the top, with an empty contact form */}
+        <div
+          key={open ?? "closed"}
+          className="mt-2.5 flex-1 overflow-y-auto text-xs sm:text-sm leading-relaxed text-muted-foreground"
+        >
           {open === "about" && (
             <div className="space-y-2.5 sm:space-y-3.5">
-              <p>
-                Lumber Lab is a Portland, OR based design/build studio with 19+ years of experience,
-                dedicated to crafting outdoor living spaces that feel like natural extensions of
-                your home. We specialize in custom decks, pergolas, outdoor kitchens and fire
-                features, built to last and designed to be enjoyed for years to come.
-              </p>
+              <p>Lumber Lab Outdoor Construction.</p>
               <p>This website is a work in progress and made with love by Dom.</p>
               <p className="font-display text-accent">Licensed · Bonded · Insured</p>
             </div>
@@ -277,31 +289,20 @@ function Index() {
           )}
 
           {open === "contact" && (
-            <div className="space-y-1.5">
-              <div className="grid grid-cols-2 gap-3 pt-3">
-                <a
-                  href="tel:+15035550142"
-                  className="rounded-md border border-primary bg-primary/10 px-3 py-1.5 text-center font-display text-sm font-medium tracking-[0.18em] text-primary uppercase transition-colors duration-300 hover:bg-primary/20 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-                >
-                  call us
-                </a>
-                <a
-                  href="sms:+15035550142"
-                  className="rounded-md border border-primary bg-primary/10 px-3 py-1.5 text-center font-display text-sm font-medium tracking-[0.18em] text-primary uppercase transition-colors duration-300 hover:bg-primary/20 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-                >
-                  or text
-                </a>
-              </div>
-
-              <div className="pt-1.5">
-                <p className="mb-1.5 text-center font-display text-[0.65rem] tracking-[0.18em] text-muted-foreground uppercase">
-                  or request a call back below
-                </p>
-                <ContactForm />
-              </div>
+            <div className="pt-5.5">
+              <ContactForm onClose={() => setOpen(null)} />
             </div>
           )}
         </div>
+
+        {(open === "about" || open === "services") && (
+          <button
+            onClick={() => setOpen("contact")}
+            className="mt-5 h-12.5 self-center rounded-md border border-accent bg-accent px-8 font-display text-sm font-medium tracking-[0.25em] text-background uppercase transition-colors duration-300 hover:border-primary hover:bg-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+          >
+            get in touch
+          </button>
+        )}
       </aside>
     </main>
   );
