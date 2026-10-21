@@ -41,6 +41,7 @@ export const Route = createFileRoute("/")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:image", content: new URL(lockup, SITE_URL).href },
       {
         "script:ld+json": {
           "@context": "https://schema.org",
