@@ -44,32 +44,42 @@ export const Route = createFileRoute("/")({
       {
         "script:ld+json": {
           "@context": "https://schema.org",
-          "@type": "GeneralContractor",
-          name: "Lumber Lab Outdoor Construction",
-          url: SITE_URL,
-          telephone: "+1-XXX-XXX-XXXX",
-          email: "lumberlab.pdx@gmail.com",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Portland",
-            addressRegion: "OR",
-            postalCode: "97204",
-            addressCountry: "US",
-          },
-          areaServed: serviceArea.map((city) => ({ "@type": "City", name: `${city}, OR` })),
-          hasOfferCatalog: {
-            "@type": "OfferCatalog",
-            name: "Outdoor construction services",
-            // One sub-catalog per category in the Services drawer
-            itemListElement: services.map(([category, items]) => ({
+          // Three unlinked objects so the validator lists each one at the top level;
+          // pointing the business at the others (even by @id) nests them under it again
+          "@graph": [
+            {
+              "@type": "GeneralContractor",
+              name: "Lumber Lab Outdoor Construction",
+              url: SITE_URL,
+              telephone: "+1-XXX-XXX-XXXX",
+              email: "lumberlab.pdx@gmail.com",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Portland",
+                addressRegion: "OR",
+                postalCode: "97204",
+                addressCountry: "US",
+              },
+            },
+            {
+              "@type": "AdministrativeArea",
+              name: "Portland metro area",
+              containsPlace: serviceArea.map((city) => ({ "@type": "City", name: `${city}, OR` })),
+            },
+            {
               "@type": "OfferCatalog",
-              name: category,
-              itemListElement: items.map((item) => ({
-                "@type": "Offer",
-                itemOffered: { "@type": "Service", name: item },
+              name: "Outdoor construction services",
+              // One sub-catalog per category in the Services drawer
+              itemListElement: services.map(([category, items]) => ({
+                "@type": "OfferCatalog",
+                name: category,
+                itemListElement: items.map((item) => ({
+                  "@type": "Offer",
+                  itemOffered: { "@type": "Service", name: item },
+                })),
               })),
-            })),
-          },
+            },
+          ],
         },
       },
     ],
