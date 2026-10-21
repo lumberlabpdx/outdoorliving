@@ -10,8 +10,29 @@ import lockup from "@/assets/lumber-lab-lockup.png";
 import { ContactForm } from "@/components/contact-form";
 import { buttonClass, buttonTextClass } from "@/lib/button-class";
 
-const title = "Lumber Lab - Portland, OR";
+const title = "Lumber Lab Outdoor Construction";
 const description = "Custom, handcrafted outdoor living spaces.";
+const SITE_URL = "https://lumberlabpdx.github.io/outdoorliving/";
+
+const serviceArea = [
+  "Portland",
+  "Gresham",
+  "Troutdale",
+  "Hillsboro",
+  "Beaverton",
+  "Tigard",
+  "Tualatin",
+  "Sherwood",
+  "Forest Grove",
+  "Cornelius",
+  "Lake Oswego",
+  "Oregon City",
+  "West Linn",
+  "Milwaukie",
+  "Happy Valley",
+  "Wilsonville",
+  "Gladstone",
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -20,6 +41,37 @@ export const Route = createFileRoute("/")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      {
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "GeneralContractor",
+          name: "Lumber Lab Outdoor Construction",
+          url: SITE_URL,
+          telephone: "+1-XXX-XXX-XXXX",
+          email: "lumberlab.pdx@gmail.com",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Portland",
+            addressRegion: "OR",
+            postalCode: "97204",
+            addressCountry: "US",
+          },
+          areaServed: serviceArea.map((city) => ({ "@type": "City", name: `${city}, OR` })),
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Outdoor construction services",
+            // One sub-catalog per category in the Services drawer
+            itemListElement: services.map(([category, items]) => ({
+              "@type": "OfferCatalog",
+              name: category,
+              itemListElement: items.map((item) => ({
+                "@type": "Offer",
+                itemOffered: { "@type": "Service", name: item },
+              })),
+            })),
+          },
+        },
+      },
     ],
   }),
   component: Index,
