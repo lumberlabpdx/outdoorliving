@@ -1,8 +1,9 @@
 import { useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import { ArrowUpRight, Check, MessageSquare, Phone } from "lucide-react";
+import { buttonClass, buttonTextClass } from "@/lib/button-class";
 import { contactSchema } from "@/lib/contact-schema";
-import { requestCallback } from "@/lib/contact";
+import { REQUEST_FAILED_MESSAGE, requestCallback } from "@/lib/contact";
 
 type Field = "name" | "phone" | "projectDescription";
 type Errors = Partial<Record<Field, string>>;
@@ -18,19 +19,15 @@ const inputClass =
 
 const labelClass = "font-display text-[0.6rem] tracking-[0.22em] text-accent uppercase";
 
-// Same look as the About / Services / Contact nav buttons: solid olive, gold on hover
-const buttonClass =
-  "rounded-md border border-accent bg-accent font-display text-sm font-medium tracking-[0.25em] text-background uppercase " +
-  "transition-colors duration-300 hover:border-primary hover:bg-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none";
+const solidButtonClass = `${buttonTextClass} ${buttonClass}`;
 
-const quickContactClass = `flex h-12.5 items-center justify-center gap-2 px-3 ${buttonClass}`;
+const quickContactClass = `flex h-12.5 items-center justify-center gap-2 px-3 ${solidButtonClass}`;
 
 // The whole contact drawer body: call/text links, then the callback form (or its thank-you).
 export function ContactForm({ onClose }: { onClose: () => void }) {
   const [values, setValues] = useState<Values>(empty);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "failed">("idle");
-  const [message, setMessage] = useState("");
 
   const onChange =
     (field: Field) => (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -56,18 +53,12 @@ export function ContactForm({ onClose }: { onClose: () => void }) {
 
     setErrors({});
     setStatus("sending");
-    setMessage("");
     try {
       await requestCallback(parsed.data);
       setStatus("sent");
       setValues(empty);
-    } catch (error) {
+    } catch {
       setStatus("failed");
-      setMessage(
-        error instanceof Error && error.message
-          ? error.message
-          : "We couldn't send your request. Please call or text us instead.",
-      );
     }
   }
 
@@ -77,14 +68,15 @@ export function ContactForm({ onClose }: { onClose: () => void }) {
         <span className="grid h-13 w-13 place-items-center rounded-md border border-primary bg-primary/10 text-primary">
           <Check aria-hidden="true" className="h-5 w-5" />
         </span>
-        <h3
-          className="font-display text-2xl font-light tracking-[0.2em] uppercase sm:text-3xl"
-          style={{ color: "#708238" }}
-        >
+        <h3 className="font-display text-2xl font-light tracking-[0.2em] text-olive uppercase sm:text-3xl">
           Thank you.
         </h3>
         <p>Your request is in. We'll call you back shortly.</p>
-        <button type="button" onClick={onClose} className={`mt-3.5 w-fit px-4 py-2 ${buttonClass}`}>
+        <button
+          type="button"
+          onClick={onClose}
+          className={`mt-3.5 w-fit px-4 py-2 ${solidButtonClass}`}
+        >
           Back to projects
         </button>
       </div>
@@ -174,13 +166,15 @@ export function ContactForm({ onClose }: { onClose: () => void }) {
         <button
           type="submit"
           disabled={status === "sending"}
-          className={`mt-1 flex h-12.5 w-full items-center justify-between px-4 disabled:opacity-50 ${buttonClass}`}
+          className={`mt-1 flex h-12.5 w-full items-center justify-between px-4 disabled:opacity-50 ${solidButtonClass}`}
         >
           {status === "sending" ? "Sending…" : "Request a callback"}
           <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
         </button>
 
-        {status === "failed" && <p className="text-center text-xs text-primary">{message}</p>}
+        {status === "failed" && (
+          <p className="text-center text-xs text-primary">{REQUEST_FAILED_MESSAGE}</p>
+        )}
 
         <p className="text-center text-[0.65rem] text-muted-foreground">
           We will get back to you as soon as possible.

@@ -28,6 +28,10 @@ npm run dev            # http://localhost:8080
 
 `.github/workflows/deploy.yml` builds the static site and publishes it on every push to `main`.
 
+The contact form needs your Supabase project's URL and publishable key at build time. Add them as
+repository variables (Settings → Secrets and variables → Actions → Variables):
+`VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`.
+
 ### Server hosting
 
 `npm run build` produces a server build with [Nitro](https://nitro.build). By default it targets

@@ -8,23 +8,18 @@ import c4 from "@/assets/c4.jpg";
 import logo from "@/assets/lumber-lab-logo.png";
 import lockup from "@/assets/lumber-lab-lockup.png";
 import { ContactForm } from "@/components/contact-form";
+import { buttonClass, buttonTextClass } from "@/lib/button-class";
+
+const title = "Lumber Lab - Portland, OR";
+const description = "Custom, handcrafted outdoor living spaces.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lumber Lab | Portland, OR" },
-      {
-        name: "description",
-        content: "Custom, handcrafted outdoor living spaces.",
-      },
-      {
-        property: "og:title",
-        content: "Lumber Lab | Portland, OR",
-      },
-      {
-        property: "og:description",
-        content: "Custom, handcrafted outdoor living spaces.",
-      },
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
     ],
   }),
   component: Index,
@@ -189,9 +184,7 @@ function Index() {
         {/* The bottom padding lifts the centered heading a little above the middle */}
         <div className="mt-8 mb-10 md:mt-auto md:mb-auto md:pb-[6vh]">
           <h1 className="font-display text-3xl leading-[1.1] font-light tracking-tight md:text-4xl lg:text-[2.6rem]">
-            <span className="block" style={{ color: "#708238" }}>
-              handcrafted
-            </span>
+            <span className="block text-olive">handcrafted</span>
             <span className="block text-primary">outdoor spaces</span>
           </h1>
           <p className="mt-3 text-xs text-muted-foreground">
@@ -207,11 +200,9 @@ function Index() {
               key={p}
               onClick={() => setOpen(p)}
               aria-expanded={open === p}
-              className="group flex w-full items-center gap-3 rounded-md border border-accent bg-accent px-4 py-2.5 text-left transition-colors duration-300 hover:border-primary hover:bg-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+              className={`group flex w-full items-center gap-3 px-4 py-2.5 text-left ${buttonClass}`}
             >
-              <span className="font-display text-sm font-medium tracking-[0.25em] text-background uppercase">
-                {p}
-              </span>
+              <span className={buttonTextClass}>{p}</span>
               <span className="ml-auto h-px w-4 bg-background/50 transition-all duration-500 group-hover:w-8 group-hover:bg-background" />
             </button>
           ))}
@@ -306,10 +297,7 @@ function Index() {
           // Both lines step down a size below 360px so the close button still fits beside them
           <div className="flex items-start justify-between gap-2">
             <div>
-              <h2
-                className="font-display text-base min-[360px]:text-lg sm:text-xl font-light tracking-[0.14em] uppercase whitespace-nowrap"
-                style={{ color: "#708238" }}
-              >
+              <h2 className="font-display text-base min-[360px]:text-lg sm:text-xl font-light tracking-[0.14em] text-olive uppercase whitespace-nowrap">
                 click to call or text
               </h2>
               <p className="mt-0.5 font-display text-[0.6rem] min-[360px]:text-[0.68rem] sm:text-xs font-medium tracking-[0.18em] text-primary uppercase whitespace-nowrap">
@@ -319,10 +307,7 @@ function Index() {
             {closeButton("mt-1 shrink-0")}
           </div>
         ) : (
-          <h2
-            className="mt-3 font-display text-2xl sm:text-3xl font-light tracking-[0.2em] uppercase"
-            style={{ color: "#708238" }}
-          >
+          <h2 className="mt-3 font-display text-2xl sm:text-3xl font-light tracking-[0.2em] text-olive uppercase">
             {open}
           </h2>
         )}
@@ -366,7 +351,7 @@ function Index() {
         {(open === "about" || open === "services") && (
           <button
             onClick={() => setOpen("contact")}
-            className="mt-5 h-12.5 w-full rounded-md border border-accent bg-accent px-4 font-display text-sm font-medium tracking-[0.25em] text-background uppercase transition-colors duration-300 hover:border-primary hover:bg-primary focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+            className={`mt-5 h-12.5 w-full px-4 ${buttonTextClass} ${buttonClass}`}
           >
             click to get in touch
           </button>
