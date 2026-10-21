@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "build:pages": "vite build --mode pages",
+    "build:pages": "vite build --mode pages && node scripts/format-html.ts",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
