@@ -292,7 +292,6 @@ function Index() {
           </div>
         ))}
         <div className="bg-fade-left absolute inset-0 hidden md:block" />
-        <div className="absolute inset-0 bg-overlay md:hidden" />
         <div className="bg-fade-bottom absolute inset-x-0 bottom-0 h-1/3" />
 
         {/* Review card for the current slide */}
