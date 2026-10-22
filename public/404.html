@@ -1,0 +1,1204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex" />
+    <title>Page not found | Lumber Lab Outdoor Construction</title>
+    <link rel="icon" type="image/png" href="/outdoorliving/favicon.png" data-site-link />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DotGothic16&family=Monoton&family=Mr+Dafoe&family=VT323&display=swap"
+    />
+    <style>
+      /* GitHub Pages serves this file for any address on the site that doesn't exist.
+         Layout: one screen, no scrolling. A fixed sunset scene with palms; a neon 404 flanked by marble statue heads,
+         with WordArt and neon script in the sky; three Win95 windows sized to fit the space left; a taskbar pinned to the bottom */
+      :root {
+        color-scheme: dark;
+        --sky-top: #0d0221;
+        --sky-mid: #2b0b5a;
+        --sky-low: #a4136f;
+        --neon-pink: #ff2a9d;
+        --neon-cyan: #1ef2ff;
+        --sun-gold: #ffd23f;
+        --sun-orange: #ff8a3d;
+        --glow: #ffd8f2;
+        --grid: #ff2a9dbf;
+        --haze: #ff2a9d66;
+        --star: #ffffffcc;
+        --screen: #05010f;
+        --veil: #05010fa6;
+        --chrome: #c3c3c3;
+        --chrome-mid: #dfdfdf;
+        --chrome-hi: #ffffff;
+        --chrome-lo: #808080;
+        --ink: #0a0a0a;
+        --title-a: #3a0ca3;
+        --title-b: #ff2a9d;
+        --title-off-a: #808080;
+        --title-off-b: #b9b9c6;
+        --err-red: #e0201b;
+        --palm: #1b0838;
+        --palm-band: #2c0f52;
+        --palm-rim: #ff2a9d99;
+        --wa-1: #ffffff;
+        --wa-2: #b8c7ff;
+        --wa-3: #3a1d6e;
+        --wa-4: #ff9ad5;
+
+        --font-neon: "Monoton", Impact, "Arial Black", sans-serif;
+        --font-vhs: "VT323", "Courier New", monospace;
+        --font-ui: Tahoma, "Microsoft Sans Serif", "MS Sans Serif", Geneva, Verdana, sans-serif;
+        --font-ja:
+          "DotGothic16", "MS Gothic", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+        --font-wordart: "Archivo Black", "Arial Black", Impact, sans-serif;
+        --font-script: "Mr Dafoe", "Brush Script MT", cursive;
+
+        --bevel-out:
+          inset -1px -1px var(--ink), inset 1px 1px var(--chrome-mid),
+          inset -2px -2px var(--chrome-lo), inset 2px 2px var(--chrome-hi);
+        --bevel-in:
+          inset -1px -1px var(--chrome-hi), inset 1px 1px var(--chrome-lo),
+          inset -2px -2px var(--chrome-mid), inset 2px 2px var(--ink);
+      }
+
+      html {
+        height: 100%;
+      }
+      body {
+        box-sizing: border-box;
+        min-height: 100%;
+        margin: 0;
+        display: grid;
+        grid-template-columns: minmax(0, 1320px);
+        grid-template-rows: auto auto minmax(0, 1fr);
+        justify-content: center;
+        background: var(--sky-top);
+        color: var(--glow);
+        font: 14px var(--font-ui);
+        padding-left: max(16px, env(safe-area-inset-left, 0px));
+        padding-right: max(16px, env(safe-area-inset-right, 0px));
+        padding-block: calc(8px + env(safe-area-inset-top, 0px))
+          calc(46px + env(safe-area-inset-bottom, 0px));
+        overflow-x: clip;
+      }
+      img {
+        max-width: 100%;
+      }
+
+      /* ---------- Scene ---------- */
+      .scene {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+        background:
+          radial-gradient(ellipse 70% 30% at 50% 58%, var(--haze), transparent 70%),
+          linear-gradient(to bottom, var(--sky-top) 0%, var(--sky-mid) 36%, var(--sky-low) 58%);
+      }
+      .defs {
+        position: absolute;
+      }
+      .stars {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        background: var(--star);
+        box-shadow:
+          8vw 6vh var(--star),
+          19vw 14vh var(--star),
+          31vw 4vh var(--star),
+          44vw 11vh var(--star),
+          57vw 3vh var(--star),
+          68vw 16vh var(--star),
+          81vw 7vh var(--star),
+          92vw 13vh var(--star),
+          13vw 26vh var(--star),
+          37vw 22vh var(--star),
+          63vw 27vh var(--star),
+          87vw 24vh var(--star),
+          4vw 38vh var(--star),
+          96vw 35vh var(--star);
+      }
+      .sun {
+        position: absolute;
+        left: 50%;
+        bottom: 42%;
+        width: min(64vw, 420px);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        transform: translate(-50%, 28%);
+        background: linear-gradient(
+          to bottom,
+          var(--sun-gold) 0%,
+          var(--sun-orange) 45%,
+          var(--neon-pink) 82%
+        );
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          #000 0 50%,
+          transparent 50% 53%,
+          #000 53% 61%,
+          transparent 61% 65%,
+          #000 65% 72%,
+          transparent 72% 77%,
+          #000 77% 83%,
+          transparent 83% 89%,
+          #000 89%
+        );
+        mask-image: linear-gradient(
+          to bottom,
+          #000 0 50%,
+          transparent 50% 53%,
+          #000 53% 61%,
+          transparent 61% 65%,
+          #000 65% 72%,
+          transparent 72% 77%,
+          #000 77% 83%,
+          transparent 83% 89%,
+          #000 89%
+        );
+      }
+      .floor {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 42%;
+        overflow: hidden;
+        background: var(--sky-top);
+        border-top: 2px solid var(--neon-pink);
+        box-shadow: 0 -6px 28px var(--neon-pink);
+        perspective: 320px;
+        perspective-origin: 50% 0;
+      }
+      .floor::before {
+        content: "";
+        position: absolute;
+        left: -100%;
+        right: -100%;
+        top: 0;
+        height: 320%;
+        background-image:
+          linear-gradient(to right, var(--grid) 2px, transparent 2px),
+          linear-gradient(to bottom, var(--grid) 2px, transparent 2px);
+        background-size: 64px 64px;
+        transform-origin: 50% 0;
+        transform: rotateX(72deg);
+        animation: drive 1.6s linear infinite;
+      }
+      .floor::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, var(--sky-top) 0%, transparent 40%);
+      }
+      @keyframes drive {
+        to {
+          background-position: 0 64px;
+        }
+      }
+
+      /* Palms stand on the horizon; the small pair only shows on wide screens */
+      .palm {
+        position: absolute;
+        bottom: calc(42% - 6px);
+        height: min(44vh, 50vw);
+        aspect-ratio: 200 / 320;
+      }
+      .palm-l1 {
+        left: -3vw;
+      }
+      .palm-r1 {
+        right: -3vw;
+        transform: scaleX(-1);
+      }
+      .palm-l2,
+      .palm-r2 {
+        display: none;
+      }
+      @media (min-width: 720px) {
+        .palm {
+          height: min(50vh, 40vw);
+        }
+        .palm-l2 {
+          display: block;
+          left: 9vw;
+          height: min(30vh, 24vw);
+        }
+        .palm-r2 {
+          display: block;
+          right: 10vw;
+          height: min(36vh, 28vw);
+          transform: scaleX(-1);
+        }
+      }
+
+      /* ---------- Page rows ---------- */
+      .marquee,
+      .hero,
+      .desktop {
+        position: relative;
+        z-index: 1;
+        min-width: 0;
+      }
+      .marquee {
+        grid-row: 1;
+      }
+      .hero {
+        grid-row: 2;
+      }
+      .desktop {
+        grid-row: 3;
+      }
+
+      /* Narrow screens: the welcome lines scroll past on a ticker */
+      .marquee {
+        overflow: hidden;
+        margin-top: 6px;
+        -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+        mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+        font-family: var(--font-vhs);
+        font-size: 18px;
+        line-height: 1.2;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--neon-cyan);
+        text-shadow: 2px 0 var(--neon-pink);
+      }
+      .marquee-track {
+        display: flex;
+        width: max-content;
+        animation: ticker 24s linear infinite;
+      }
+      .marquee-copy {
+        margin: 0;
+        padding-right: 2.5em;
+        white-space: nowrap;
+      }
+      @keyframes ticker {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      .hero {
+        container-type: inline-size;
+        --neon: clamp(40px, min(20vw, 12svh), 168px);
+        --hero-pad: clamp(4px, 2svh, 28px);
+        display: grid;
+        justify-items: center;
+        align-content: center;
+        gap: 4px;
+        text-align: center;
+        padding-block: var(--hero-pad);
+      }
+      .neon {
+        margin: 0;
+        font-family: var(--font-neon);
+        font-weight: 400;
+        font-size: var(--neon);
+        line-height: 1;
+        color: var(--glow);
+        text-shadow:
+          0 0 4px var(--glow),
+          0 0 14px var(--neon-pink),
+          0 0 36px var(--neon-pink),
+          0 0 72px var(--neon-pink);
+        animation: flicker 7s infinite;
+      }
+      @keyframes flicker {
+        0%,
+        46%,
+        48.5%,
+        51%,
+        100% {
+          opacity: 1;
+        }
+        47% {
+          opacity: 0.55;
+        }
+        50% {
+          opacity: 0.75;
+        }
+      }
+      .sub {
+        margin: 2px -0.5em 0 0;
+        font-family: var(--font-vhs);
+        font-size: clamp(13px, calc(var(--neon) * 0.267), 32px);
+        line-height: 1.1;
+        letter-spacing: 0.5em;
+        color: var(--neon-cyan);
+        text-shadow: 2px 0 var(--neon-pink);
+      }
+      .ja {
+        margin: 0 -0.3em 0 0;
+        font-family: var(--font-ja);
+        font-size: clamp(11px, calc(var(--neon) * 0.19), 20px);
+        line-height: 1.3;
+        letter-spacing: 0.3em;
+        color: var(--sun-gold);
+        text-shadow:
+          0 0 3px var(--sky-top),
+          0 0 8px var(--sky-top),
+          2px 2px 0 var(--sky-top);
+      }
+
+      /* Marble statue heads face the 404 from both sides; the image faces left, so the left copy is mirrored.
+         Narrow: beside the 404 line only */
+      .bust {
+        position: absolute;
+        top: calc(var(--hero-pad) - var(--neon) * 0.04);
+        height: calc(var(--neon) * 1.05);
+        width: auto;
+        aspect-ratio: 272 / 308;
+        filter: drop-shadow(0 0 8px var(--haze));
+        pointer-events: none;
+      }
+      .bust-left {
+        right: calc(50% + var(--neon) * 1.26);
+        transform: scaleX(-1);
+      }
+      .bust-right {
+        left: calc(50% + var(--neon) * 1.26);
+      }
+
+      /* Wide screens: WordArt and neon script fill the sky either side of the statues */
+      .corner {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        display: none;
+        align-content: center;
+        justify-items: center;
+        text-align: center;
+        pointer-events: none;
+      }
+      .welcome {
+        left: 0;
+        right: calc(50% + var(--neon) * 3.45);
+        margin: 0;
+        transform: rotate(-4deg) skewX(-6deg);
+        filter: drop-shadow(1px 1px 0 var(--wa-3)) drop-shadow(1px 1px 0 var(--wa-3))
+          drop-shadow(2px 2px 0 var(--neon-pink));
+        animation: bob 5s ease-in-out infinite;
+      }
+      .wa-small,
+      .wa-big {
+        display: block;
+        font-family: var(--font-wordart);
+        line-height: 1.08;
+        text-transform: uppercase;
+        background: linear-gradient(
+          to bottom,
+          var(--wa-1) 0%,
+          var(--wa-2) 46%,
+          var(--wa-3) 50%,
+          var(--wa-4) 58%,
+          var(--wa-1) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .wa-small {
+        font-size: calc(var(--neon) * 0.2);
+        letter-spacing: 0.04em;
+      }
+      .wa-big {
+        font-size: calc(var(--neon) * 0.42);
+      }
+      .glad-block {
+        left: calc(50% + var(--neon) * 3.45);
+        right: 0;
+        gap: 2px;
+        animation: bob 6s ease-in-out -2s infinite;
+      }
+      .pyramid {
+        width: calc(var(--neon) * 0.8);
+        height: calc(var(--neon) * 0.8);
+      }
+      .glad {
+        margin: 0;
+        font-family: var(--font-script);
+        font-size: calc(var(--neon) * 0.46);
+        line-height: 1;
+        color: var(--glow);
+        text-shadow:
+          0 0 4px var(--neon-pink),
+          0 0 12px var(--neon-pink),
+          0 0 26px var(--neon-pink);
+        text-wrap: balance;
+        transform: rotate(-6deg);
+      }
+      @keyframes bob {
+        50% {
+          translate: 0 -6px;
+        }
+      }
+
+      @media (min-width: 980px) and (min-aspect-ratio: 1 / 1) {
+        .marquee {
+          display: none;
+        }
+        .hero {
+          --neon: clamp(40px, min(12svh, 6.8cqw), 168px);
+        }
+        .bust {
+          top: auto;
+          bottom: var(--hero-pad);
+          height: calc(var(--neon) * 1.55);
+        }
+        .bust-left {
+          right: calc(50% + var(--neon) * 2);
+        }
+        .bust-right {
+          left: calc(50% + var(--neon) * 2);
+        }
+        .corner {
+          display: grid;
+        }
+      }
+
+      /* ---------- Desktop: narrow screens stack the windows ----------
+         The dialog keeps its size; the image and video split whatever height is left */
+      .desktop {
+        container-type: size;
+        display: flex;
+        flex-direction: column;
+        justify-content: safe center;
+        --gap: clamp(6px, 1.6svh, 16px);
+        --chrome-h: 40px;
+        --dialog-h: 140px;
+        --media-h: max(0px, 100cqh - var(--dialog-h) - 2 * var(--gap) - 2 * var(--chrome-h));
+        gap: var(--gap);
+      }
+      .win {
+        position: relative;
+        z-index: 1;
+        min-width: 0;
+        padding: 3px;
+        background: var(--chrome);
+        box-shadow:
+          var(--bevel-out),
+          8px 8px 0 var(--veil);
+        color: var(--ink);
+      }
+      .win-image {
+        align-self: flex-start;
+        width: min(92cqw, calc(var(--media-h) * 0.42 * 1068 / 460));
+      }
+      .win-video {
+        z-index: 2;
+        align-self: flex-end;
+        width: min(92cqw, calc(var(--media-h) * 0.58 * 16 / 9));
+      }
+      .win-dialog {
+        z-index: 3;
+        align-self: center;
+        width: min(100%, 360px);
+      }
+      .win.is-front {
+        z-index: 5;
+      }
+
+      .titlebar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        overflow: hidden;
+        padding: 3px 3px 3px 6px;
+        background: linear-gradient(90deg, var(--title-off-a), var(--title-off-b));
+        color: var(--chrome);
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .titlebar.active {
+        background: linear-gradient(90deg, var(--title-a), var(--title-b));
+        color: var(--chrome-hi);
+      }
+      .titlebar h2 {
+        margin: 0;
+        font: inherit;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .ctrls {
+        display: flex;
+        flex: none;
+        gap: 2px;
+      }
+      .ctrls span {
+        display: grid;
+        place-items: center;
+        width: 18px;
+        height: 16px;
+        background: var(--chrome);
+        box-shadow: var(--bevel-out);
+        color: var(--ink);
+        font-size: 11px;
+        line-height: 1;
+      }
+      .ctrls span:last-child {
+        margin-left: 2px;
+      }
+      .win-body {
+        padding: 4px 2px 2px;
+      }
+      .statusbar {
+        display: none;
+        gap: 2px;
+        margin-top: 2px;
+        font-size: 12px;
+      }
+      .statusbar span {
+        flex: 1;
+        padding: 3px 6px;
+        box-shadow:
+          inset 1px 1px var(--chrome-lo),
+          inset -1px -1px var(--chrome-hi);
+      }
+
+      /* Image window: the picture as a paused VHS frame, with the caption as a subtitle strip */
+      .vhs {
+        position: relative;
+        margin: 0;
+        container-type: inline-size;
+        box-shadow: var(--bevel-in);
+        padding: 2px;
+        background: var(--screen);
+      }
+      .frame {
+        position: relative;
+        aspect-ratio: 1068 / 380;
+        max-width: 100%;
+        overflow: hidden;
+      }
+      .frame img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(1.15) contrast(1.05);
+      }
+      .frame::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          repeating-linear-gradient(to bottom, transparent 0 2px, var(--veil) 2px 3px),
+          radial-gradient(ellipse at center, transparent 55%, var(--veil) 100%);
+        opacity: 0.5;
+        pointer-events: none;
+      }
+      .osd {
+        position: absolute;
+        inset: 6px auto auto 10px;
+        display: grid;
+        justify-items: start;
+        gap: 2px;
+        font-family: var(--font-vhs);
+        font-size: clamp(11px, 3.6cqi, 26px);
+        line-height: 1;
+        color: var(--chrome-hi);
+        text-shadow: 2px 2px 0 var(--ink);
+        pointer-events: none;
+      }
+      .osd .play::after {
+        content: "";
+        display: inline-block;
+        margin-left: 0.35em;
+        border-left: 0.6em solid currentColor;
+        border-block: 0.35em solid transparent;
+      }
+      .vhs figcaption {
+        display: grid;
+        place-items: center;
+        height: 7.5cqi;
+        overflow: hidden;
+        background: var(--screen);
+        font-family: var(--font-vhs);
+        font-size: clamp(9px, 4.8cqi, 34px);
+        line-height: 1;
+        text-align: center;
+        text-transform: uppercase;
+        white-space: nowrap;
+        color: var(--chrome);
+        text-shadow: 2px 2px 0 var(--ink);
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
+
+      /* Video window */
+      .screen {
+        aspect-ratio: 16 / 9;
+        max-width: 100%;
+        overflow: hidden;
+        box-shadow: var(--bevel-in);
+        background: var(--screen);
+      }
+      .screen iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      /* Error dialog */
+      .dialog-body {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: center;
+        gap: 14px;
+        padding: 14px 14px 6px;
+      }
+      .err-icon {
+        position: relative;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: var(--err-red);
+        box-shadow:
+          1px 1px 0 var(--ink),
+          inset 0 0 0 1px var(--ink);
+      }
+      .err-icon::before,
+      .err-icon::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 18px;
+        height: 4px;
+        background: var(--chrome-hi);
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      .err-icon::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+      .dialog-body p {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+      .dialog-actions {
+        display: flex;
+        justify-content: center;
+        padding: 4px 14px 12px;
+      }
+      .btn95 {
+        display: inline-block;
+        min-width: 88px;
+        padding: 7px 18px;
+        background: var(--chrome);
+        box-shadow: var(--bevel-out);
+        color: var(--ink);
+        font-family: var(--font-ui);
+        font-size: 13px;
+        text-align: center;
+        text-decoration: none;
+      }
+      .btn95:hover {
+        background: var(--chrome-mid);
+      }
+      .btn95:active {
+        box-shadow: var(--bevel-in);
+        padding: 8px 17px 6px 19px;
+      }
+      .btn95:focus-visible {
+        outline: 1px dotted var(--ink);
+        outline-offset: -5px;
+      }
+      .msg-short {
+        display: none;
+      }
+
+      /* Phones: a one-row dialog leaves more height for the image and video */
+      @media (max-width: 560px) {
+        .desktop {
+          --dialog-h: 92px;
+        }
+        .dialog-main {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 10px 12px;
+        }
+        .dialog-body {
+          flex: 1;
+          gap: 10px;
+          padding: 0;
+        }
+        .dialog-actions {
+          padding: 0;
+        }
+        .btn95 {
+          padding-inline: 10px;
+        }
+        .btn95:active {
+          padding: 8px 9px 6px 11px;
+        }
+        .msg-long {
+          display: none;
+        }
+        .msg-short {
+          display: inline;
+        }
+      }
+
+      /* ---------- Desktop: wide screens place the windows side by side ----------
+         Each window's width comes from the height it's allowed, so the whole group always fits.
+         When there isn't room for the dialog under the image, it overlaps the image's bottom edge */
+      @media (min-width: 720px) and (min-aspect-ratio: 1 / 1) {
+        .desktop {
+          display: block;
+          --chrome-h: 62px;
+          --gap: 16px;
+          --dialog-h: 156px;
+          --overlap: 2cqw;
+          --wi: min(
+            46cqw,
+            calc((max(100cqh - var(--dialog-h) - var(--gap), 62cqh) - var(--chrome-h)) * 1068 / 460)
+          );
+          --hi: calc(var(--wi) * 460 / 1068 + var(--chrome-h));
+          --vy: min(40px, 6cqh);
+          --wv: min(52cqw, calc((100cqh - var(--vy) - var(--chrome-h)) * 16 / 9));
+          --hv: calc(var(--wv) * 9 / 16 + var(--chrome-h));
+          --hc: min(100cqh, max(var(--hi) + var(--gap) + var(--dialog-h), var(--vy) + var(--hv)));
+          --x0: calc((100cqw - var(--wi) - var(--wv) + var(--overlap)) / 2);
+          --y0: calc((100cqh - var(--hc)) / 2);
+        }
+        .statusbar {
+          display: flex;
+        }
+        .win-image {
+          position: absolute;
+          left: var(--x0);
+          top: var(--y0);
+          width: var(--wi);
+        }
+        .win-video {
+          position: absolute;
+          left: calc(var(--x0) + var(--wi) - var(--overlap));
+          top: calc(var(--y0) + var(--vy));
+          width: var(--wv);
+        }
+        .win-dialog {
+          position: absolute;
+          left: calc(var(--x0) + 3cqw);
+          top: calc(var(--y0) + min(var(--hi) + var(--gap), var(--hc) - var(--dialog-h)));
+          width: min(340px, max(280px, var(--wi) - 3cqw));
+        }
+      }
+
+      /* ---------- Taskbar ---------- */
+      .taskbar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px max(16px, env(safe-area-inset-right, 0px))
+          calc(4px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+        background: var(--chrome);
+        box-shadow:
+          inset 0 1px var(--chrome-mid),
+          inset 0 2px var(--chrome-hi);
+        color: var(--ink);
+        font-size: 12px;
+      }
+      .start,
+      .task {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        min-width: 0;
+        padding: 5px 10px;
+        border: 0;
+        background: var(--chrome);
+        box-shadow: var(--bevel-out);
+        color: var(--ink);
+        font: inherit;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .start:active,
+      .task:active,
+      .task[aria-pressed="true"] {
+        background: var(--chrome-mid);
+        box-shadow: var(--bevel-in);
+      }
+      .start:focus-visible,
+      .task:focus-visible {
+        outline: 1px dotted var(--ink);
+        outline-offset: -4px;
+      }
+      .start {
+        font-weight: 700;
+      }
+      .start-sun {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: linear-gradient(to bottom, var(--sun-gold), var(--neon-pink));
+      }
+      .task {
+        flex: 0 1 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .clock {
+        margin-left: auto;
+        padding: 5px 10px;
+        box-shadow:
+          inset 1px 1px var(--chrome-lo),
+          inset -1px -1px var(--chrome-hi);
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      @media (max-width: 520px) {
+        .task {
+          display: none;
+        }
+      }
+      @media (max-width: 380px) {
+        .dialog-body p {
+          font-size: 12px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .floor::before,
+        .neon,
+        .welcome,
+        .glad-block {
+          animation: none;
+        }
+        .marquee {
+          -webkit-mask-image: none;
+          mask-image: none;
+        }
+        .marquee-track {
+          display: block;
+          width: auto;
+          animation: none;
+          text-align: center;
+        }
+        .marquee-copy {
+          padding: 0;
+          white-space: normal;
+        }
+        .marquee-copy + .marquee-copy {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scene" aria-hidden="true">
+      <svg class="defs" width="0" height="0" focusable="false">
+        <defs>
+          <path id="frond" d="M116 70 C140 50 176 52 198 80 C176 64 146 64 116 77 Z" />
+          <symbol id="palm" viewBox="0 0 200 320">
+            <g
+              style="
+                fill: var(--palm);
+                stroke: var(--palm-rim);
+                stroke-width: 1.5;
+                stroke-linejoin: round;
+              "
+            >
+              <path d="M92 320 C96 240 104 150 112 70 L121 72 C114 150 108 240 108 320 Z" />
+              <path
+                d="M100 318 C104 240 110 150 116 74"
+                style="fill: none; stroke: var(--palm-band); stroke-width: 9; stroke-dasharray: 2 8"
+              />
+              <use href="#frond" transform="rotate(-75 116 70)" />
+              <use href="#frond" transform="rotate(-45 116 70)" />
+              <use href="#frond" transform="rotate(-15 116 70)" />
+              <use href="#frond" transform="rotate(14 116 70)" />
+              <use href="#frond" transform="rotate(40 116 70)" />
+              <use href="#frond" transform="translate(232 0) scale(-1 1) rotate(-70 116 70)" />
+              <use href="#frond" transform="translate(232 0) scale(-1 1) rotate(-38 116 70)" />
+              <use href="#frond" transform="translate(232 0) scale(-1 1) rotate(-8 116 70)" />
+              <use href="#frond" transform="translate(232 0) scale(-1 1) rotate(22 116 70)" />
+              <use href="#frond" transform="translate(232 0) scale(-1 1) rotate(46 116 70)" />
+              <circle cx="111" cy="78" r="4.5" />
+              <circle cx="120" cy="80" r="4.5" />
+              <circle cx="115" cy="85" r="4.5" />
+            </g>
+          </symbol>
+        </defs>
+      </svg>
+      <div class="stars"></div>
+      <div class="sun"></div>
+      <div class="floor"></div>
+      <svg class="palm palm-l1" viewBox="0 0 200 320" focusable="false"><use href="#palm" /></svg>
+      <svg class="palm palm-l2" viewBox="0 0 200 320" focusable="false"><use href="#palm" /></svg>
+      <svg class="palm palm-r2" viewBox="0 0 200 320" focusable="false"><use href="#palm" /></svg>
+      <svg class="palm palm-r1" viewBox="0 0 200 320" focusable="false"><use href="#palm" /></svg>
+    </div>
+
+    <div class="marquee">
+      <div class="marquee-track">
+        <p class="marquee-copy">
+          Welcome to Lumber Lab Vaporwave Construction <span aria-hidden="true">✦</span> Glad you
+          made it here! <span aria-hidden="true">✦</span>
+        </p>
+        <p class="marquee-copy" aria-hidden="true">
+          Welcome to Lumber Lab Vaporwave Construction ✦ Glad you made it here! ✦
+        </p>
+      </div>
+    </div>
+
+    <header class="hero">
+      <img
+        class="bust bust-left"
+        src="/outdoorliving/404-statue.webp"
+        width="272"
+        height="308"
+        alt=""
+        data-site-link
+      />
+      <img
+        class="bust bust-right"
+        src="/outdoorliving/404-statue.webp"
+        width="272"
+        height="308"
+        alt=""
+        data-site-link
+      />
+      <p class="corner welcome">
+        <span class="wa-small">Welcome to</span> <span class="wa-big">Lumber Lab</span>
+        <span class="wa-small">Vaporwave Construction</span>
+      </p>
+      <div class="corner glad-block">
+        <canvas class="pyramid" id="pyramid" aria-hidden="true"></canvas>
+        <p class="glad">Glad you made it here!</p>
+      </div>
+      <h1 class="neon">404</h1>
+      <p class="sub">PAGE NOT FOUND</p>
+      <p class="ja" lang="ja">ページが見つかりません</p>
+    </header>
+
+    <main class="desktop">
+      <section class="win win-image" id="obiwan" aria-labelledby="obiwan-title">
+        <div class="titlebar">
+          <h2 id="obiwan-title">obi-wan.bmp - Paint</h2>
+          <span class="ctrls" aria-hidden="true"><span>_</span><span>□</span><span>×</span></span>
+        </div>
+        <div class="win-body">
+          <figure class="vhs">
+            <div class="frame">
+              <img
+                src="/outdoorliving/404-obi-wan.webp"
+                width="1068"
+                height="380"
+                alt="Obi-Wan Kenobi waving his hand in the Jedi mind trick."
+                data-site-link
+              />
+              <div class="osd" aria-hidden="true">
+                <span class="play">PLAY</span>
+                <span>SP <span id="timecode">0:00:00</span></span>
+              </div>
+            </div>
+            <figcaption>This isn’t the page you’re looking for</figcaption>
+          </figure>
+        </div>
+        <div class="statusbar"><span>1068 × 380</span><span>25 KB</span></div>
+      </section>
+
+      <section class="win win-video" id="rickroll" aria-labelledby="rickroll-title">
+        <div class="titlebar">
+          <h2 id="rickroll-title">rickroll.mpg - Media Player</h2>
+          <span class="ctrls" aria-hidden="true"><span>_</span><span>□</span><span>×</span></span>
+        </div>
+        <div class="win-body">
+          <div class="screen">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=dQw4w9WgXcQ&amp;playsinline=1"
+              title="Rick Astley - Never Gonna Give You Up"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+                web-share;
+              "
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        <div class="statusbar"><span>Autoplay: muted</span><span>Loop: on</span></div>
+      </section>
+
+      <section class="win win-dialog is-front" id="error" aria-labelledby="dialog-title">
+        <div class="titlebar active">
+          <h2 id="dialog-title">Lumber Lab</h2>
+          <span class="ctrls" aria-hidden="true"><span>×</span></span>
+        </div>
+        <div class="dialog-main">
+          <div class="dialog-body">
+            <span class="err-icon" aria-hidden="true"></span>
+            <p>
+              <span class="msg-long"
+                >This page doesn't exist. It may have moved, or the link has a typo.</span
+              ><span class="msg-short">Page not found.</span>
+            </p>
+          </div>
+          <div class="dialog-actions">
+            <a class="btn95" href="/outdoorliving/" data-site-link>Return to Lumber Lab</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="taskbar" aria-label="Taskbar">
+      <a class="start" href="/outdoorliving/" data-site-link
+        ><span class="start-sun" aria-hidden="true"></span>Start<span class="sr-only">
+          (Lumber Lab home page)</span
+        ></a
+      >
+      <button class="task" type="button" data-win="obiwan" aria-pressed="false">obi-wan.bmp</button>
+      <button class="task" type="button" data-win="rickroll" aria-pressed="false">
+        rickroll.mpg
+      </button>
+      <span class="clock" id="clock"></span>
+    </nav>
+
+    <script>
+      // GitHub Pages shows this page at whatever address was mistyped (like /outdoorliving/some/old/link),
+      // so the links to the site's own files above are written from the site root, /outdoorliving/.
+      // If the site moves (a custom domain serves it from /, a renamed repo from /<new name>/), fix them here.
+      const siteRoot = location.hostname.endsWith(".github.io")
+        ? `/${location.pathname.split("/")[1]}/`
+        : "/";
+      for (const el of document.querySelectorAll("[data-site-link]")) {
+        const attr = el.hasAttribute("src") ? "src" : "href";
+        const path = el.getAttribute(attr).replace(/^\/[^/]+\//, siteRoot);
+        if (path !== el.getAttribute(attr)) el.setAttribute(attr, path);
+      }
+
+      // Clicking a window, or its taskbar button, brings it to the front like on a real desktop
+      const windows = [...document.querySelectorAll(".win")];
+      const tasks = [...document.querySelectorAll(".task")];
+      const bringToFront = (win) => {
+        for (const w of windows) {
+          w.classList.toggle("is-front", w === win);
+          w.querySelector(".titlebar").classList.toggle("active", w === win);
+        }
+        for (const t of tasks) t.setAttribute("aria-pressed", String(t.dataset.win === win.id));
+      };
+      for (const w of windows) {
+        w.addEventListener("pointerdown", () => bringToFront(w));
+        w.addEventListener("focusin", () => bringToFront(w));
+      }
+      for (const t of tasks) {
+        t.addEventListener("click", () => bringToFront(document.getElementById(t.dataset.win)));
+      }
+
+      const clock = document.getElementById("clock");
+      const showTime = () => {
+        clock.textContent = new Date().toLocaleTimeString([], {
+          hour: "numeric",
+          minute: "2-digit",
+        });
+      };
+      showTime();
+      setInterval(showTime, 15000);
+
+      const timecode = document.getElementById("timecode");
+      const started = Date.now();
+      setInterval(() => {
+        const s = Math.floor((Date.now() - started) / 1000);
+        const mm = String(Math.floor(s / 60) % 60).padStart(2, "0");
+        const ss = String(s % 60).padStart(2, "0");
+        timecode.textContent = `${Math.floor(s / 3600)}:${mm}:${ss}`;
+      }, 1000);
+
+      // Wireframe pyramid: five corners turned about the vertical axis, tilted toward the viewer, drawn in perspective
+      const pyramid = document.getElementById("pyramid");
+      const ctx = pyramid.getContext("2d");
+      const rootStyle = getComputedStyle(document.documentElement);
+      const lineColor = rootStyle.getPropertyValue("--neon-cyan").trim();
+      const glowColor = rootStyle.getPropertyValue("--neon-pink").trim();
+      const corners = [
+        [0, -1.1, 0],
+        [-1, 0.7, -1],
+        [1, 0.7, -1],
+        [1, 0.7, 1],
+        [-1, 0.7, 1],
+      ];
+      const edges = [
+        [0, 1],
+        [0, 2],
+        [0, 3],
+        [0, 4],
+        [1, 2],
+        [2, 3],
+        [3, 4],
+        [4, 1],
+      ];
+      const still = matchMedia("(prefers-reduced-motion: reduce)");
+      const drawPyramid = (time) => {
+        const w = pyramid.clientWidth;
+        const h = pyramid.clientHeight;
+        if (!w) return; // hidden on narrow screens
+        const dpr = devicePixelRatio || 1;
+        if (pyramid.width !== Math.round(w * dpr)) {
+          pyramid.width = Math.round(w * dpr);
+          pyramid.height = Math.round(h * dpr);
+        }
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.clearRect(0, 0, w, h);
+        const turn = time / 2400;
+        const tilt = 0.38;
+        const scale = w * 0.3;
+        const points = corners.map(([x, y, z]) => {
+          const x1 = x * Math.cos(turn) - z * Math.sin(turn);
+          const z1 = x * Math.sin(turn) + z * Math.cos(turn);
+          const y2 = y * Math.cos(tilt) - z1 * Math.sin(tilt);
+          const z2 = y * Math.sin(tilt) + z1 * Math.cos(tilt);
+          const depth = 3.2 / (3.2 + z2);
+          return [w / 2 + x1 * scale * depth, h / 2 + y2 * scale * depth];
+        });
+        ctx.strokeStyle = lineColor;
+        ctx.lineWidth = 1.5;
+        ctx.shadowColor = glowColor;
+        ctx.shadowBlur = 8;
+        ctx.beginPath();
+        for (const [a, b] of edges) {
+          ctx.moveTo(...points[a]);
+          ctx.lineTo(...points[b]);
+        }
+        ctx.stroke();
+      };
+      const spin = (time) => {
+        drawPyramid(time);
+        if (!still.matches) requestAnimationFrame(spin);
+      };
+      requestAnimationFrame(spin);
+      addEventListener("resize", () => drawPyramid(performance.now()));
+    </script>
+  </body>
+</html>
