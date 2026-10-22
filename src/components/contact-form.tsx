@@ -15,7 +15,7 @@ const PHONE = "+19713193445";
 
 const inputClass =
   "w-full rounded-md border border-olive/45 bg-background/40 px-3 text-sm text-foreground " +
-  "placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none";
+  "placeholder:text-foreground/60 focus:border-primary focus:outline-none";
 
 const labelClass = "font-display text-[0.6rem] tracking-[0.22em] text-olive uppercase";
 
@@ -98,7 +98,7 @@ export function ContactForm({ onClose }: { onClose: () => void }) {
 
       <div className="flex items-center gap-3">
         <span className="h-px flex-1 bg-border" />
-        <p className="font-display text-[0.65rem] tracking-[0.18em] text-muted-foreground uppercase">
+        <p className="font-display text-[0.65rem] tracking-[0.18em] text-foreground uppercase">
           or request a call back below
         </p>
         <span className="h-px flex-1 bg-border" />
@@ -176,7 +176,7 @@ export function ContactForm({ onClose }: { onClose: () => void }) {
           <p className="text-center text-xs text-primary">{REQUEST_FAILED_MESSAGE}</p>
         )}
 
-        <p className="text-center text-[0.65rem] text-muted-foreground">
+        <p className="text-center text-[0.65rem] text-foreground">
           We will get back to you as soon as possible.
         </p>
       </form>

@@ -21,7 +21,6 @@
   --color-card: var(--card);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -34,16 +33,16 @@
 :root {
   --radius: 0.25rem;
   --background: oklch(0 0 0);
-  --foreground: oklch(0.94 0.012 90);
+  /* The site's one text grey: body copy, reviews, labels, the carousel location */
+  --foreground: oklch(0.65 0.015 90);
   --card: oklch(0 0 0);
   --primary: oklch(0.78 0.12 82);
   --primary-foreground: oklch(0 0 0);
-  --muted-foreground: oklch(0.65 0.015 90);
   --border: oklch(0.78 0.12 82 / 18%);
   --input: oklch(0.78 0.12 82 / 25%);
   --ring: oklch(0.78 0.12 82);
   --overlay: oklch(0 0 0 / 70%);
-  /* The site's one olive: headings, buttons, labels, the carousel location */
+  /* The site's one olive: headings, buttons, labels */
   --olive: oklch(0.55 0.08 115);
   --gradient-fade: linear-gradient(to right, var(--background), transparent 35%);
   --gradient-fade-up: linear-gradient(to top, var(--overlay), transparent 60%);

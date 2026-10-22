@@ -93,27 +93,27 @@ const slides = [
     src: tree,
     label: "Forest treehouse retreat",
     location: "Sellwood",
-    review: "Sample project review for a Sellwood treehouse.",
-    client: "John Doe",
+    review: "They had a particular set of skills, skills acquired over a very long career.",
+    client: "Liam Neeson",
   },
   {
     src: stamp,
     label: "Stamped stone patio & pergola",
     location: "Mount Tabor",
-    review: "Review for a stamped concrete job in Mt. Tabor.",
-    client: "Amanda R.",
+    review: "I like very much! Great Success!",
+    client: "Borat Sagdiyev",
   },
   {
     src: deck,
     label: "Hardwood deck & view stairs",
     location: "Lents",
-    review: "A project done in the Lents neighborhood.",
-    client: "Patrick S.",
+    review: "My dog would've loved this deck.",
+    client: "John Wick",
   },
   {
     src: c4,
     label: "Louvered pergola & garden",
-    location: "Northwest",
+    location: "Northwest Portland",
     review: "These reviews, locations, and pictures are placeholders and are not real.",
     client: "Client Name",
   },
@@ -208,7 +208,7 @@ function Index() {
     <button
       onClick={() => setOpen(null)}
       aria-label="Close"
-      className={`${className} text-muted-foreground transition-colors hover:text-primary`}
+      className={`${className} text-foreground transition-colors hover:text-primary`}
     >
       <X className="h-5 w-5" />
     </button>
@@ -238,7 +238,7 @@ function Index() {
             </div>
           </div>
 
-          <div className="mt-2.5 font-display text-[0.62rem] leading-tight tracking-[0.16em] text-muted-foreground uppercase">
+          <div className="mt-2.5 font-display text-[0.62rem] leading-tight tracking-[0.16em] text-foreground uppercase">
             <p>OR CCB# 000000</p>
             <p>WA L&amp;I# LUMLAB000000</p>
           </div>
@@ -250,7 +250,7 @@ function Index() {
             <span className="block text-olive">handcrafted</span>
             <span className="block text-primary">outdoor spaces</span>
           </h1>
-          <p className="mt-3 text-xs text-muted-foreground">
+          <p className="mt-3 text-xs text-foreground">
             Developed and maintained by Dom Saint P.
             <br />
             Work in progress.
@@ -270,7 +270,7 @@ function Index() {
             </button>
           ))}
         </nav>
-        <p className="mt-3 text-xs text-muted-foreground">© Lumber Lab Outdoor Construction</p>
+        <p className="mt-3 text-xs text-foreground">© Lumber Lab Outdoor Construction</p>
       </section>
 
       {/* Rotating photo carousel */}
@@ -322,7 +322,7 @@ function Index() {
         ))}
 
         <div className="absolute bottom-6 left-6 z-10 font-display font-medium tracking-[0.25em] uppercase md:bottom-8 md:left-10">
-          <p className="text-[0.65rem] text-olive">{slides[i]?.location}</p>
+          <p className="text-[0.65rem] text-foreground">{slides[i]?.location}</p>
           <p className="mt-0.5 text-xs text-primary">{slides[i]?.label}</p>
         </div>
       </section>
@@ -377,7 +377,7 @@ function Index() {
         {/* Keyed by panel so each one starts fresh: scrolled to the top, with an empty contact form */}
         <div
           key={open ?? "closed"}
-          className="mt-2.5 flex-1 overflow-y-auto text-xs sm:text-sm leading-relaxed text-muted-foreground"
+          className="mt-2.5 flex-1 overflow-y-auto text-xs sm:text-sm leading-relaxed text-foreground"
         >
           {open === "about" && (
             <div className="space-y-2.5 sm:space-y-3.5">
