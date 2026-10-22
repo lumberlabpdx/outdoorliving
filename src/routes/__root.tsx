@@ -84,6 +84,11 @@ export const Route = createRootRoute({
         href: "https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600&family=Manrope:wght@300;400;500&display=swap",
       },
       { rel: "icon", type: "image/png", href: `${import.meta.env.BASE_URL}favicon.png` },
+      {
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+        href: `${import.meta.env.BASE_URL}apple-touch-icon.png`,
+      },
     ],
   }),
   // No `component`: the router renders child routes through its default <Outlet />
