@@ -4,7 +4,7 @@ second iteration of Lumber Lab, new color scheme and aesthetic, same design prin
 
 ## Development
 
-Requires Node.js 22+ and npm.
+Requires Node.js 22.18+ and npm.
 
 ```sh
 npm install

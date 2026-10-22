@@ -25,6 +25,14 @@ describe("contact form validation", () => {
     expect(contactSchema.safeParse({ ...valid, phone: "call me 503-5550" }).success).toBe(false);
   });
 
+  it("rejects a phone number with no digits", () => {
+    expect(contactSchema.safeParse({ ...valid, phone: "---" }).success).toBe(false);
+  });
+
+  it("rejects a phone number missing its area code", () => {
+    expect(contactSchema.safeParse({ ...valid, phone: "555-0142" }).success).toBe(false);
+  });
+
   it("accepts a phone number with digits, spaces, dashes, parentheses and a plus", () => {
     expect(contactSchema.safeParse({ ...valid, phone: "+1 (503) 555-0142" }).success).toBe(true);
   });

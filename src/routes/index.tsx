@@ -119,7 +119,7 @@ const slides = [
   },
 ];
 
-type Panel = "about" | "services" | "contact" | null;
+type Panel = "about" | "services" | "contact";
 
 const services: [string, string[]][] = [
   [
@@ -191,7 +191,12 @@ const services: [string, string[]][] = [
 
 function Index() {
   const [i, setI] = useState(0);
-  const [open, setOpen] = useState<Panel>(null);
+  const [open, setOpen] = useState<Panel | null>(null);
+  // What the drawer shows: the last panel opened, kept while the drawer slides shut so its
+  // content doesn't vanish before it's off screen
+  const [panel, setPanel] = useState<Panel | null>(null);
+  // Counts openings, so each one starts fresh (see the drawer body's key)
+  const [visit, setVisit] = useState(0);
 
   useEffect(() => {
     const t = setInterval(() => setI((n) => (n + 1) % slides.length), 5500);
@@ -203,6 +208,12 @@ function Index() {
     window.addEventListener("keydown", k);
     return () => window.removeEventListener("keydown", k);
   }, []);
+
+  const openPanel = (p: Panel) => {
+    if (!open) setVisit((v) => v + 1);
+    setPanel(p);
+    setOpen(p);
+  };
 
   const closeButton = (className: string) => (
     <button
@@ -217,7 +228,10 @@ function Index() {
   return (
     <main className="relative flex min-h-dvh w-full flex-col overflow-x-hidden bg-background font-sans text-foreground md:h-dvh md:flex-row md:overflow-hidden">
       {/* Brand, hero, and navigation */}
-      <section className="relative z-10 flex w-full flex-col px-8 py-7 md:h-full md:w-1/2 md:px-10 lg:px-16">
+      <section
+        inert={Boolean(open)}
+        className="relative z-10 flex w-full flex-col px-8 py-7 md:h-full md:w-1/2 md:px-10 lg:px-16"
+      >
         <div>
           <div className="flex items-center gap-3">
             <img
@@ -261,7 +275,7 @@ function Index() {
           {(["about", "services", "contact"] as const).map((p) => (
             <button
               key={p}
-              onClick={() => setOpen(p)}
+              onClick={() => openPanel(p)}
               aria-expanded={open === p}
               className={`group flex w-full items-center gap-3 px-4 py-2.5 text-left ${buttonClass}`}
             >
@@ -274,7 +288,10 @@ function Index() {
       </section>
 
       {/* Rotating photo carousel */}
-      <section className="relative h-[55vh] min-h-[360px] w-full shrink-0 bg-background md:h-auto md:min-h-0 md:flex-1">
+      <section
+        inert={Boolean(open)}
+        className="relative h-[55vh] min-h-[360px] w-full shrink-0 bg-background md:h-auto md:min-h-0 md:flex-1"
+      >
         {slides.map((s, n) => (
           <div
             key={n}
@@ -335,15 +352,17 @@ function Index() {
         }`}
       />
 
-      {/* Drawer */}
+      {/* Drawer. Inert while closed so Tab can't reach its off-screen buttons; while it's open,
+          the page behind it is inert instead */}
       <aside
+        inert={!open}
         className={`fixed top-0 left-0 z-30 flex h-dvh w-full max-w-md flex-col border-r border-border bg-card px-8 pt-5 pb-5 transition-transform duration-500 ease-out md:px-10 md:pt-6 md:pb-5 ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        {open !== "contact" && closeButton("self-end")}
+        {(panel === "about" || panel === "services") && closeButton("self-end")}
 
-        {open === "about" ? (
+        {panel === "about" ? (
           <>
             <img
               src={lockup}
@@ -354,7 +373,7 @@ function Index() {
             />
             <span className="mx-auto mt-2 h-px w-16 bg-primary" />
           </>
-        ) : open === "contact" ? (
+        ) : panel === "contact" ? (
           // Heading on the left, close button on the right in the same row
           // Both lines step down a size below 360px so the close button still fits beside them
           <div className="flex items-start justify-between gap-2">
@@ -368,26 +387,29 @@ function Index() {
             </div>
             {closeButton("mt-1 shrink-0")}
           </div>
-        ) : (
+        ) : panel === "services" ? (
           <h2 className="mt-3 font-display text-2xl sm:text-3xl font-light tracking-[0.2em] text-olive uppercase">
-            {open}
+            {panel}
           </h2>
-        )}
+        ) : null}
 
-        {/* Keyed by panel so each one starts fresh: scrolled to the top, with an empty contact form */}
+        {/* Keyed by panel and by opening, so each one starts fresh: scrolled to the top, with an
+            empty contact form */}
         <div
-          key={open ?? "closed"}
+          key={`${panel}-${visit}`}
           className="mt-2.5 flex-1 overflow-y-auto text-xs sm:text-sm leading-relaxed text-foreground"
         >
-          {open === "about" && (
+          {panel === "about" && (
             <div className="space-y-2.5 sm:space-y-3.5">
-              <p>This is a labor of love.</p>
-              <p>Southeast.</p>
+              <p>
+                We are a Portland based design &amp; build studio focused on developing custom
+                outdoor living spaces.
+              </p>
               <p className="font-display text-olive">Licensed · Bonded · Insured</p>
             </div>
           )}
 
-          {open === "services" && (
+          {panel === "services" && (
             // Fixed at 12px on every screen size to keep scrolling to a minimum
             <ul className="space-y-3 text-xs leading-normal">
               {services.map(([t, items]) => (
@@ -403,16 +425,16 @@ function Index() {
             </ul>
           )}
 
-          {open === "contact" && (
+          {panel === "contact" && (
             <div className="pt-5.5">
               <ContactForm onClose={() => setOpen(null)} />
             </div>
           )}
         </div>
 
-        {(open === "about" || open === "services") && (
+        {(panel === "about" || panel === "services") && (
           <button
-            onClick={() => setOpen("contact")}
+            onClick={() => openPanel("contact")}
             className={`mt-5 h-12.5 w-full px-4 ${buttonTextClass} ${buttonClass}`}
           >
             click to get in touch

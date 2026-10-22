@@ -11,7 +11,12 @@ export const contactSchema = z.object({
     .trim()
     .min(1, "Please enter a phone number")
     .max(30, "Please keep the phone number under 30 characters")
-    .regex(/^[+0-9()\-.\s]+$/, "Use digits and + ( ) - . only"),
+    .regex(/^[+0-9()\-.\s]+$/, "Use digits and + ( ) - . only")
+    // The characters above alone would let "---" through: a US number has 10 digits
+    .refine(
+      (phone) => phone.replace(/\D/g, "").length >= 10,
+      "Please enter a full phone number, with area code",
+    ),
   projectDescription: z
     .string()
     .trim()
