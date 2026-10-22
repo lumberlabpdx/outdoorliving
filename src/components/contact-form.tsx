@@ -11,13 +11,13 @@ type Values = Record<Field, string>;
 
 const empty: Values = { name: "", phone: "", projectDescription: "" };
 
-const PHONE = "+15035550142";
+const PHONE = "+19713193445";
 
 const inputClass =
-  "w-full rounded-md border border-accent/45 bg-background/40 px-3 text-sm text-foreground " +
+  "w-full rounded-md border border-olive/45 bg-background/40 px-3 text-sm text-foreground " +
   "placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none";
 
-const labelClass = "font-display text-[0.6rem] tracking-[0.22em] text-accent uppercase";
+const labelClass = "font-display text-[0.6rem] tracking-[0.22em] text-olive uppercase";
 
 const solidButtonClass = `${buttonTextClass} ${buttonClass}`;
 

@@ -52,7 +52,7 @@ export const Route = createFileRoute("/")({
               "@type": "GeneralContractor",
               name: "Lumber Lab Outdoor Construction",
               url: SITE_URL,
-              telephone: "+1-XXX-XXX-XXXX",
+              telephone: "+1-971-319-3445",
               email: "lumberlab.pdx@gmail.com",
               address: {
                 "@type": "PostalAddress",
@@ -64,12 +64,12 @@ export const Route = createFileRoute("/")({
             },
             {
               "@type": "AdministrativeArea",
-              name: "Portland metro area",
+              name: "Portland Metropolitan Area",
               containsPlace: serviceArea.map((city) => ({ "@type": "City", name: `${city}, OR` })),
             },
             {
               "@type": "OfferCatalog",
-              name: "Outdoor construction services",
+              name: "Outdoor Living Spaces",
               // One sub-catalog per category in the Services drawer
               itemListElement: services.map(([category, items]) => ({
                 "@type": "OfferCatalog",
@@ -229,7 +229,7 @@ function Index() {
               className="h-12 w-12 shrink-0 object-contain"
             />
             <div className="leading-none">
-              <p className="font-display text-2xl font-medium tracking-[0.16em] text-accent">
+              <p className="font-display text-2xl font-medium tracking-[0.16em] text-olive">
                 Lumber Lab
               </p>
               <p className="mt-2 font-display text-[0.62rem] tracking-[0.28em] text-primary uppercase">
@@ -299,7 +299,7 @@ function Index() {
           <figure
             key={s.label}
             aria-hidden={n !== i}
-            className={`absolute top-6 right-6 z-10 w-72 max-w-[calc(100%-3rem)] rounded-md border border-accent bg-background p-5 transition-opacity duration-[1500ms] md:top-8 md:right-10 md:w-80 ${
+            className={`absolute top-6 right-6 z-10 w-72 max-w-[calc(100%-3rem)] rounded-md border border-olive bg-background/87 p-5 transition-opacity duration-[1500ms] md:top-8 md:right-10 md:w-80 ${
               n === i ? "opacity-100" : "pointer-events-none opacity-0"
             }`}
           >
@@ -322,7 +322,7 @@ function Index() {
         ))}
 
         <div className="absolute bottom-6 left-6 z-10 font-display font-medium tracking-[0.25em] uppercase md:bottom-8 md:left-10">
-          <p className="text-[0.65rem] text-accent">{slides[i]?.location}</p>
+          <p className="text-[0.65rem] text-olive">{slides[i]?.location}</p>
           <p className="mt-0.5 text-xs text-primary">{slides[i]?.label}</p>
         </div>
       </section>
@@ -383,7 +383,7 @@ function Index() {
             <div className="space-y-2.5 sm:space-y-3.5">
               <p>This is a labor of love.</p>
               <p>Southeast.</p>
-              <p className="font-display text-accent">Licensed · Bonded · Insured</p>
+              <p className="font-display text-olive">Licensed · Bonded · Insured</p>
             </div>
           )}
 
@@ -393,7 +393,7 @@ function Index() {
               {services.map(([t, items]) => (
                 <li key={t}>
                   <p className="font-display text-sm font-medium tracking-wide text-primary">{t}</p>
-                  <ul className="mt-0.5 list-disc pl-4 marker:text-accent">
+                  <ul className="mt-0.5 list-disc pl-4 marker:text-olive">
                     {items.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
