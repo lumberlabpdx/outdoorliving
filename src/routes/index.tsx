@@ -1,38 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Star, X } from "lucide-react";
-import tree from "@/assets/tree.jpg";
-import stamp from "@/assets/stamp.jpg";
-import deck from "@/assets/deck.jpg";
-import c4 from "@/assets/c4.jpg";
 import logo from "@/assets/lumber-lab-logo.png";
 import lockup from "@/assets/lumber-lab-lockup.png";
 import { ContactForm } from "@/components/contact-form";
 import { buttonClass, buttonTextClass } from "@/lib/button-class";
+import { serviceArea, services, slides } from "@/lib/content";
+import { EMAIL, PHONE, SITE_NAME, SITE_URL } from "@/lib/site";
 
-const title = "Lumber Lab Outdoor Construction";
+const title = SITE_NAME;
 const description = "Custom, handcrafted outdoor living spaces.";
-const SITE_URL = "https://lumberlabpdx.github.io/outdoorliving/";
-
-const serviceArea = [
-  "Portland",
-  "Gresham",
-  "Troutdale",
-  "Hillsboro",
-  "Beaverton",
-  "Tigard",
-  "Tualatin",
-  "Sherwood",
-  "Forest Grove",
-  "Cornelius",
-  "Lake Oswego",
-  "Oregon City",
-  "West Linn",
-  "Milwaukie",
-  "Happy Valley",
-  "Wilsonville",
-  "Gladstone",
-];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -50,10 +27,10 @@ export const Route = createFileRoute("/")({
           "@graph": [
             {
               "@type": "GeneralContractor",
-              name: "Lumber Lab Outdoor Construction",
+              name: SITE_NAME,
               url: SITE_URL,
-              telephone: "+1-971-319-3445",
-              email: "lumberlab.pdx@gmail.com",
+              telephone: PHONE,
+              email: EMAIL,
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Portland",
@@ -88,106 +65,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const slides = [
-  {
-    src: tree,
-    label: "Forest treehouse retreat",
-    location: "Sellwood",
-    review: "They had a particular set of skills, skills acquired over a very long career.",
-    client: "Liam Neeson",
-  },
-  {
-    src: stamp,
-    label: "Stamped stone patio & pergola",
-    location: "Mount Tabor",
-    review: "I like very much! Great Success!",
-    client: "Borat Sagdiyev",
-  },
-  {
-    src: deck,
-    label: "Hardwood deck & view stairs",
-    location: "Lents",
-    review: "My dog would've loved this deck.",
-    client: "John Wick",
-  },
-  {
-    src: c4,
-    label: "Louvered pergola & garden",
-    location: "Northwest Portland",
-    review: "These reviews, locations, and pictures are placeholders and are not real.",
-    client: "Client Name",
-  },
-];
-
 type Panel = "about" | "services" | "contact";
-
-const services: [string, string[]][] = [
-  [
-    "Decks & Railings",
-    [
-      "Cedar, hardwood & composite decks",
-      "Multi-level & hillside decks",
-      "Rooftop decks",
-      "Stairs, landings & built-in benches",
-      "Cable, glass & metal railings",
-      "Under-deck drainage",
-      "Resurfacing & replacement",
-    ],
-  ],
-  [
-    "Patios & Hardscape",
-    [
-      "Stamped concrete, paver & flagstone patios",
-      "Walkways & garden paths",
-      "Retaining & seat walls",
-      "Outdoor steps",
-      "Fencing & gates",
-    ],
-  ],
-  [
-    "Pergolas & Covers",
-    [
-      "Timber & louvered pergolas",
-      "Covered patios & patio roofs",
-      "Pavilions & gazebos",
-      "Arbors, trellises & privacy screens",
-      "Heaters, fans & retractable shades",
-    ],
-  ],
-  [
-    "Garden Structures",
-    ["Treehouses", "Backyard studios & offices", "Saunas", "Garden & potting sheds"],
-  ],
-  [
-    "Outdoor Kitchens",
-    [
-      "Built-in grill islands",
-      "Full kitchens with sink & fridge",
-      "Pizza ovens & smokers",
-      "Outdoor bars & dining areas",
-    ],
-  ],
-  [
-    "Fire & Water",
-    [
-      "Fire pits & fire tables",
-      "Outdoor fireplaces",
-      "Hot tub & spa decks",
-      "Cold plunges & outdoor showers",
-      "Ponds & water features",
-    ],
-  ],
-  [
-    "Lighting & Landscape",
-    [
-      "Path, step & rail lighting",
-      "String & café lights",
-      "Raised beds & built-in planters",
-      "Landscaping & irrigation",
-      "Privacy plantings",
-    ],
-  ],
-];
 
 function Index() {
   const [i, setI] = useState(0);
@@ -284,7 +162,7 @@ function Index() {
             </button>
           ))}
         </nav>
-        <p className="mt-3 text-xs text-foreground">© Lumber Lab Outdoor Construction</p>
+        <p className="mt-3 text-xs text-foreground">{`© ${SITE_NAME}`}</p>
       </section>
 
       {/* Rotating photo carousel */}
@@ -302,8 +180,8 @@ function Index() {
             <img
               src={s.src}
               alt={s.label}
-              width={1024}
-              height={1280}
+              width={s.width}
+              height={s.height}
               className={`h-full w-full object-cover ${n === i ? "animate-kenburns" : ""}`}
             />
           </div>
@@ -366,7 +244,7 @@ function Index() {
           <>
             <img
               src={lockup}
-              alt="Lumber Lab Outdoor Construction"
+              alt={SITE_NAME}
               width={1110}
               height={1110}
               className="mx-auto mt-1 h-52 w-auto max-h-[36vh] sm:h-64 md:h-72 object-contain"

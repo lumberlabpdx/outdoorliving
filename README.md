@@ -19,6 +19,7 @@ npm run dev            # http://localhost:8080
 | `npm run build:pages` | Static build for GitHub Pages (output in `dist/client/`) |
 | `npm run preview`     | Serve the production build locally                       |
 | `npm run lint`        | Lint with ESLint                                         |
+| `npm run typecheck`   | Check types with TypeScript                              |
 | `npm run format`      | Format with Prettier                                     |
 | `npm test`            | Run tests with Vitest                                    |
 
@@ -26,11 +27,16 @@ npm run dev            # http://localhost:8080
 
 ### GitHub Pages
 
-`.github/workflows/deploy.yml` builds the static site and publishes it on every push to `main`.
+On every push to `main`, `.github/workflows/deploy.yml` runs lint, the type check, the tests and a
+security audit of the site's packages, then builds the static site and publishes it. If any check
+fails, nothing is published and the live site stays as it was.
 
 The contact form needs your Supabase project's URL and publishable key at build time. Add them as
 repository variables (Settings → Secrets and variables → Actions → Variables):
-`VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`.
+`VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`. The workflow stops if either is missing.
+
+The link-preview image and search-engine data use the address GitHub Pages reports, so they follow
+a custom domain on their own (re-run the workflow after adding one).
 
 ### Server hosting
 

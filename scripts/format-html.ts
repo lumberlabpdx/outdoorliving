@@ -1,15 +1,12 @@
-// `npm run build:pages` runs this after the build. React prerenders each page as one long line of
-// HTML; this puts each tag on its own line, indented by how deeply it's nested, so the page source
-// reads cleanly (e.g. in validator.schema.org), and pretty-prints the JSON-LD.
+// React prerenders each page as one long line of HTML; formatHtml puts each tag on its own line,
+// indented by how deeply it's nested, so the page source reads cleanly (e.g. in
+// validator.schema.org), and pretty-prints the JSON-LD. format-pages.ts runs it after
+// `npm run build:pages`; src/test/format-html.test.ts tests it.
 //
 // The page has to parse to exactly the same DOM, or React's hydration meets nodes it didn't render.
 // A line break between two tags would become a text node, so each break (and the indent after it)
 // goes inside a tag instead, just before its closing `>` or `/>`, where the HTML parser ignores
 // whitespace.
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
-import path from "node:path";
-
-const outDir = "dist/client";
 
 // A comment, a whole <script> or <style> element (its contents stay as they are), or a tag
 const tokens = /<!--[\s\S]*?-->|<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>|<[!/]?[a-z][^>]*>/gi;
@@ -23,7 +20,7 @@ const indent = (depth: number) => "  ".repeat(depth);
 // comment (`<!--`) early. Inside a script, `&` and `>` are plain text.
 const escapeJson = (json: string) => json.replace(/</g, "\\u003c");
 
-function formatHtml(html: string) {
+export function formatHtml(html: string) {
   // How many elements are open after the current token
   let depth = 0;
   return html.replace(tokens, (token: string, element: string | undefined, offset: number) => {
@@ -51,10 +48,4 @@ function formatHtml(html: string) {
     const nextDepth = next === "</" ? depth - 1 : depth;
     return token.replace(/\s*(\/?>)$/, `\n${indent(nextDepth)}$1`);
   });
-}
-
-for (const file of readdirSync(outDir, { encoding: "utf8", recursive: true })) {
-  if (!file.endsWith(".html")) continue;
-  const filePath = path.join(outDir, file);
-  writeFileSync(filePath, formatHtml(readFileSync(filePath, "utf8")));
 }

@@ -6,9 +6,13 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 
+import { buttonClass, buttonTextClass } from "@/lib/button-class";
 import appCss from "../styles.css?url";
+
+// The site's olive button, sized for these full-screen messages
+const messageButtonClass = `inline-flex items-center justify-center px-4 py-2 ${buttonTextClass} ${buttonClass}`;
 
 function NotFoundComponent() {
   return (
@@ -18,10 +22,7 @@ function NotFoundComponent() {
         <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
         <p className="mt-2 text-sm text-foreground">These are not the pages you are looking for.</p>
         <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
+          <Link to="/" className={messageButtonClass}>
             Go home
           </Link>
         </div>
@@ -31,7 +32,10 @@ function NotFoundComponent() {
 }
 
 function ErrorComponent({ error, reset }: ErrorComponentProps) {
-  console.error(error);
+  // Once per error, not on every re-render
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
   const router = useRouter();
 
   return (
@@ -49,14 +53,11 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className={messageButtonClass}
           >
             Try again
           </button>
-          <a
-            href={import.meta.env.BASE_URL}
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-olive"
-          >
+          <a href={import.meta.env.BASE_URL} className={messageButtonClass}>
             Go home
           </a>
         </div>

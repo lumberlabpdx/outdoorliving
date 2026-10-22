@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "build:pages": "vite build --mode pages && node scripts/format-html.ts",
+    "build:pages": "vite build --mode pages && node scripts/format-pages.ts",
     "preview": "vite preview",
     "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "test": "vitest run",
     "test:watch": "vitest"
@@ -44,7 +45,7 @@
     "prettier": "^3.7.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
-    "vite": "8.1.5",
-    "vitest": "^4.1.10"
+    "vite": "8.1.6",
+    "vitest": "^4.1.12"
   }
 }

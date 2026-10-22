@@ -4,14 +4,13 @@ import { ArrowUpRight, Check, MessageSquare, Phone } from "lucide-react";
 import { buttonClass, buttonTextClass } from "@/lib/button-class";
 import { contactSchema } from "@/lib/contact-schema";
 import { REQUEST_FAILED_MESSAGE, requestCallback } from "@/lib/contact";
+import { PHONE_LINK } from "@/lib/site";
 
 type Field = "name" | "phone" | "projectDescription";
 type Errors = Partial<Record<Field, string>>;
 type Values = Record<Field, string>;
 
 const empty: Values = { name: "", phone: "", projectDescription: "" };
-
-const PHONE = "+19713193445";
 
 const inputClass =
   "w-full rounded-md border border-olive/45 bg-background/40 px-3 text-sm text-foreground " +
@@ -86,11 +85,11 @@ export function ContactForm({ onClose }: { onClose: () => void }) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <a href={`tel:${PHONE}`} className={quickContactClass}>
+        <a href={`tel:${PHONE_LINK}`} className={quickContactClass}>
           <Phone aria-hidden="true" className="h-3.5 w-3.5" />
           call us
         </a>
-        <a href={`sms:${PHONE}`} className={quickContactClass}>
+        <a href={`sms:${PHONE_LINK}`} className={quickContactClass}>
           <MessageSquare aria-hidden="true" className="h-3.5 w-3.5" />
           or text
         </a>
