@@ -33,7 +33,8 @@ fails, nothing is published and the live site stays as it was.
 
 The contact form needs your Supabase project's URL and publishable key at build time. Add them as
 repository variables (Settings → Secrets and variables → Actions → Variables):
-`VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`. The workflow stops if either is missing.
+`VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`. Without them the site still deploys, but the
+form can't send.
 
 The link-preview image and search-engine data use the address GitHub Pages reports, so they follow
 a custom domain on their own (re-run the workflow after adding one).

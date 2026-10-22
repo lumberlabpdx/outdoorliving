@@ -19,12 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      # Without these the build still succeeds, but the live contact form can't send anything
-      - name: Check the contact form's variables are set
-        if: ${{ !vars.VITE_SUPABASE_URL || !vars.VITE_SUPABASE_PUBLISHABLE_KEY }}
-        run: |
-          echo "::error::Add VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY under Settings → Secrets and variables → Actions → Variables"
-          exit 1
       - uses: actions/checkout@v7
         with:
           # Nothing later pushes to the repo, so don't leave its access token in .git/config
