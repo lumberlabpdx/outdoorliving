@@ -124,6 +124,12 @@ export const services: [string, string[]][] = [
   ],
   [
     "Backyard Offices, Sheds & Treehouses",
-    ["Backyard offices & studios", "Garden, storage & potting sheds", "Treehouses"],
+    [
+      "Backyard offices & studios",
+      "Garden, storage & potting sheds",
+      "Greenhouses",
+      "Detached garages & carports",
+      "Treehouses",
+    ],
   ],
 ];

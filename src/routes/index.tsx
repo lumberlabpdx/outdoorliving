@@ -10,6 +10,7 @@ import { EMAIL, PHONE, SITE_NAME, SITE_URL } from "@/lib/site";
 
 // The title search results and the browser tab show. Link previews keep the plain business name
 const title = "Fences, Decks & Patios in Portland, OR | Lumber Lab";
+
 const description =
   "Fences, patios, decks, awnings, pergolas and patio covers, handcrafted in Portland, OR. Licensed, bonded and insured. Fence and deck repair too.";
 
@@ -253,7 +254,7 @@ function Index() {
             width={1110}
             height={1110}
             loading="lazy"
-            className="mx-auto mt-1 h-52 w-auto max-h-[36vh] sm:h-64 md:h-72 object-contain"
+            className="mx-auto mt-1 h-36 w-auto max-h-[36vh] md:h-52 object-contain"
           />
           <span className="mx-auto mt-2 h-px w-16 bg-primary" />
         </div>
@@ -285,11 +286,29 @@ function Index() {
           key={`${panel}-${visit}`}
           className="mt-2.5 flex-1 overflow-y-auto text-xs sm:text-sm leading-relaxed text-foreground"
         >
-          <div hidden={panel !== "about"} className="space-y-2.5 sm:space-y-3.5">
+          {/* Fixed at 12px with tighter line spacing, like Services, to keep scrolling to a minimum */}
+          <div
+            hidden={panel !== "about"}
+            className="space-y-2.5 text-xs leading-normal sm:space-y-3.5"
+          >
             <p>
-              We are a Portland based design &amp; build studio focused on developing custom outdoor
-              living spaces.
+              When the mornings chill and the clouds gray and the leaves fall and the rains pour, we
+              want you to have an outdoor space that’s as accessible and enjoyable in December as it
+              is in July. With the Northwest’s autumns &amp; winters in mind, we focus on designing
+              covered outdoor spaces that are comfortable for you and your family any time of year.
             </p>
+            <p>
+              With 25+ years in Portland and 20+ years of carpentry experience, we have homegrown
+              knowledge of the climate and surroundings, and we build with that in mind. We often
+              get calls for covered patios &amp; decks, awnings, pergolas, gazebos, and even
+              treehouses. We can do it all.
+            </p>
+            <p>
+              We also build backyard sheds, greenhouses, carports, detached garages, and more.
+              Design consultations, project estimates, and troubleshooting are always free, so reach
+              out with any questions. We’d love to help.
+            </p>
+            <p>Made with love by Dom.</p>
             <p className="font-display text-olive">Licensed · Bonded · Insured</p>
           </div>
 
