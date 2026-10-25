@@ -9,7 +9,7 @@ import { serviceArea, services, slides } from "@/lib/content";
 import { EMAIL, PHONE, SITE_NAME, SITE_URL } from "@/lib/site";
 
 // The title search results and the browser tab show. Link previews keep the plain business name
-const title = "Decks, Patios & Pergolas in Portland, OR | Lumber Lab";
+const title = "Fences, Decks & Patios in Portland, OR | Lumber Lab";
 const description =
   "Fences, patios, decks, awnings, pergolas and patio covers, handcrafted in Portland, OR. Licensed, bonded and insured. Fence and deck repair too.";
 
