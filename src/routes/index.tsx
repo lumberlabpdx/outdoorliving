@@ -11,7 +11,7 @@ import { EMAIL, PHONE, SITE_NAME, SITE_URL } from "@/lib/site";
 // The title search results and the browser tab show. Link previews keep the plain business name
 const title = "Decks, Patios & Pergolas in Portland, OR | Lumber Lab";
 const description =
-  "Custom decks, patios, pergolas and outdoor kitchens, handcrafted in Portland, OR. Licensed, bonded and insured.";
+  "Fences, patios, decks, awnings, pergolas and patio covers, handcrafted in Portland, OR. Licensed, bonded and insured. Fence and deck repair too.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
