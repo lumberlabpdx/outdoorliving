@@ -292,10 +292,10 @@ function Index() {
             className="space-y-2.5 text-xs leading-normal sm:space-y-3.5"
           >
             <p>
-              When the mornings chill and the clouds gray and the leaves fall and the rains pour, we
-              want you to have an outdoor space that’s as enjoyable in December as it is in July.
-              With the Northwest’s autumns &amp; winters in mind, we focus on designing covered
-              outdoor spaces that are comfortable for you and your family any time of year.
+              When the mornings chill, the clouds gray, the leaves fall, and the rains pour, we want
+              you to have an outdoor space that’s as enjoyable in December as it is in July. With
+              the Northwest’s autumns &amp; winters in mind, we focus on designing covered outdoor
+              spaces that are comfortable for you and your family any time of year.
             </p>
             <p>
               With 25+ years in Portland and 20+ years of carpentry experience, we have homegrown
