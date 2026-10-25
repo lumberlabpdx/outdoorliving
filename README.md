@@ -4,8 +4,8 @@
 
 Home slash landing page for **Lumber Lab Outdoor Construction**
 
+Developed and maintained by Dom Saint P.
+
 **Live site:** https://lumberlabpdx.github.io/outdoorliving/
 
 [![lumber lab online](.github/screenshot.webp)](https://lumberlabpdx.github.io/outdoorliving/)
-
-Developed and maintained by Dom Saint P.

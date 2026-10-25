@@ -17,6 +17,6 @@ export async function requestCallback(data: ContactInput) {
     if (error) throw error;
   } catch (error) {
     console.error("contact submission failed:", error);
-    throw new Error(REQUEST_FAILED_MESSAGE);
+    throw new Error(REQUEST_FAILED_MESSAGE, { cause: error });
   }
 }

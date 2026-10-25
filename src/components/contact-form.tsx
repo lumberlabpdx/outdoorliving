@@ -4,7 +4,7 @@ import { ArrowUpRight, Check, MessageSquare, Phone } from "lucide-react";
 import { buttonClass, buttonTextClass } from "@/lib/button-class";
 import { contactSchema } from "@/lib/contact-schema";
 import { REQUEST_FAILED_MESSAGE, requestCallback } from "@/lib/contact";
-import { PHONE_LINK } from "@/lib/site";
+import { PHONE_DISPLAY, PHONE_LINK } from "@/lib/site";
 
 type Field = "name" | "phone" | "projectDescription";
 type Errors = Partial<Record<Field, string>>;
@@ -84,15 +84,21 @@ export function ContactForm({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <a href={`tel:${PHONE_LINK}`} className={quickContactClass}>
-          <Phone aria-hidden="true" className="h-3.5 w-3.5" />
-          call us
-        </a>
-        <a href={`sms:${PHONE_LINK}`} className={quickContactClass}>
-          <MessageSquare aria-hidden="true" className="h-3.5 w-3.5" />
-          or text
-        </a>
+      <div>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <a href={`tel:${PHONE_LINK}`} className={quickContactClass}>
+            <Phone aria-hidden="true" className="h-3.5 w-3.5" />
+            call us
+          </a>
+          <a href={`sms:${PHONE_LINK}`} className={quickContactClass}>
+            <MessageSquare aria-hidden="true" className="h-3.5 w-3.5" />
+            or text
+          </a>
+        </div>
+        {/* Spelled out for anyone who can't call from this device, like most computers */}
+        <p className="mt-2.5 text-center font-display text-[0.65rem] tracking-[0.18em] text-foreground">
+          {PHONE_DISPLAY}
+        </p>
       </div>
 
       <div className="flex items-center gap-3">

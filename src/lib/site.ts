@@ -5,6 +5,8 @@ export const SITE_NAME = "Lumber Lab Outdoor Construction";
 // Written the way search engines show it; the call and text links drop the dashes
 export const PHONE = "+1-971-319-3445";
 export const PHONE_LINK = PHONE.replace(/-/g, "");
+// Written the way people read it, "(971) 319-3445", for the number shown under the call/text links
+export const PHONE_DISPLAY = PHONE.replace(/^\+1-(\d{3})-/, "($1) ");
 
 export const EMAIL = "lumberlab.pdx@gmail.com";
 

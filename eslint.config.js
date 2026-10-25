@@ -35,5 +35,11 @@ export default tseslint.config(
       "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
     },
   },
+  // TanStack Router's plugin hot-reloads route files itself, so this rule's warning (components
+  // defined next to the `Route` export) doesn't apply to them
+  {
+    files: ["src/routes/**/*.tsx"],
+    rules: { "react-refresh/only-export-components": "off" },
+  },
   eslintPluginPrettier,
 );

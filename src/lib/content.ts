@@ -79,13 +79,16 @@ export const services: [string, string[]][] = [
     ],
   ],
   [
-    "Patios & Hardscape",
+    "Landscaping & Hardscaping",
     [
       "Stamped concrete, paver & flagstone patios",
-      "Walkways & garden paths",
+      "Walkways, garden paths & outdoor steps",
       "Retaining & seat walls",
-      "Outdoor steps",
       "Fencing & gates",
+      "Ponds & waterfalls",
+      "Raised beds & built-in planters",
+      "Planting & irrigation",
+      "Privacy plantings",
     ],
   ],
   [
@@ -95,40 +98,23 @@ export const services: [string, string[]][] = [
       "Covered patios & patio roofs",
       "Pavilions & gazebos",
       "Arbors, trellises & privacy screens",
-      "Heaters, fans & retractable shades",
     ],
   ],
   [
-    "Garden Structures",
-    ["Treehouses", "Backyard studios & offices", "Saunas", "Garden & potting sheds"],
-  ],
-  [
-    "Outdoor Kitchens",
+    "Outdoor Kitchens & Fire",
     [
       "Built-in grill islands",
       "Full kitchens with sink & fridge",
       "Pizza ovens & smokers",
       "Outdoor bars & dining areas",
-    ],
-  ],
-  [
-    "Fire & Water",
-    [
       "Fire pits & fire tables",
       "Outdoor fireplaces",
-      "Hot tub & spa decks",
-      "Cold plunges & outdoor showers",
-      "Ponds & water features",
     ],
   ],
+  ["Spa & Wellness", ["Hot tub & spa decks", "Saunas", "Cold plunges & outdoor showers"]],
+  ["Garden Structures", ["Treehouses", "Backyard studios & offices", "Garden & potting sheds"]],
   [
-    "Lighting & Landscape",
-    [
-      "Path, step & rail lighting",
-      "String & café lights",
-      "Raised beds & built-in planters",
-      "Landscaping & irrigation",
-      "Privacy plantings",
-    ],
+    "Lighting & Comfort",
+    ["Path, step & rail lighting", "String & café lights", "Heaters, fans & retractable shades"],
   ],
 ];

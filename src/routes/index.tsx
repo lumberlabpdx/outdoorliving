@@ -8,15 +8,17 @@ import { buttonClass, buttonTextClass } from "@/lib/button-class";
 import { serviceArea, services, slides } from "@/lib/content";
 import { EMAIL, PHONE, SITE_NAME, SITE_URL } from "@/lib/site";
 
-const title = SITE_NAME;
-const description = "Custom, handcrafted outdoor living spaces.";
+// The title search results and the browser tab show. Link previews keep the plain business name
+const title = "Decks, Patios & Pergolas in Portland, OR | Lumber Lab";
+const description =
+  "Custom decks, patios, pergolas and outdoor kitchens, handcrafted in Portland, OR. Licensed, bonded and insured.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
-      { property: "og:title", content: title },
+      { property: "og:title", content: SITE_NAME },
       { property: "og:description", content: description },
       { property: "og:image", content: new URL(lockup, SITE_URL).href },
       {
@@ -240,36 +242,42 @@ function Index() {
       >
         {(panel === "about" || panel === "services") && closeButton("self-end")}
 
-        {panel === "about" ? (
-          <>
-            <img
-              src={lockup}
-              alt={SITE_NAME}
-              width={1110}
-              height={1110}
-              className="mx-auto mt-1 h-52 w-auto max-h-[36vh] sm:h-64 md:h-72 object-contain"
-            />
-            <span className="mx-auto mt-2 h-px w-16 bg-primary" />
-          </>
-        ) : panel === "contact" ? (
-          // Heading on the left, close button on the right in the same row
-          // Both lines step down a size below 360px so the close button still fits beside them
-          <div className="flex items-start justify-between gap-2">
-            <div>
-              <h2 className="font-display text-base min-[360px]:text-lg sm:text-xl font-light tracking-[0.14em] text-olive uppercase whitespace-nowrap">
-                click to call or text
-              </h2>
-              <p className="mt-0.5 font-display text-[0.6rem] min-[360px]:text-[0.68rem] sm:text-xs font-medium tracking-[0.18em] text-primary uppercase whitespace-nowrap">
-                for a free quote/consultation
-              </p>
-            </div>
-            {closeButton("mt-1 shrink-0")}
+        {/* All three panels stay in the page so search engines can read them, and the ones not
+            being shown are hidden. Before the drawer first opens, all three are */}
+        {/* The wrapper adds no box of its own, so the logo and rule sit in the drawer as before */}
+        <div hidden={panel !== "about"} className="contents">
+          {/* Lazy, so the logo still loads only once About is opened */}
+          <img
+            src={lockup}
+            alt={SITE_NAME}
+            width={1110}
+            height={1110}
+            loading="lazy"
+            className="mx-auto mt-1 h-52 w-auto max-h-[36vh] sm:h-64 md:h-72 object-contain"
+          />
+          <span className="mx-auto mt-2 h-px w-16 bg-primary" />
+        </div>
+
+        {/* Heading on the left, close button on the right in the same row
+            Both lines step down a size below 360px so the close button still fits beside them */}
+        <div hidden={panel !== "contact"} className="flex items-start justify-between gap-2">
+          <div>
+            <h2 className="font-display text-base min-[360px]:text-lg sm:text-xl font-light tracking-[0.14em] text-olive uppercase whitespace-nowrap">
+              click to call or text
+            </h2>
+            <p className="mt-0.5 font-display text-[0.6rem] min-[360px]:text-[0.68rem] sm:text-xs font-medium tracking-[0.18em] text-primary uppercase whitespace-nowrap">
+              for a free quote/consultation
+            </p>
           </div>
-        ) : panel === "services" ? (
-          <h2 className="mt-3 font-display text-2xl sm:text-3xl font-light tracking-[0.2em] text-olive uppercase">
-            {panel}
-          </h2>
-        ) : null}
+          {closeButton("mt-1 shrink-0")}
+        </div>
+
+        <h2
+          hidden={panel !== "services"}
+          className="mt-3 font-display text-2xl sm:text-3xl font-light tracking-[0.2em] text-olive uppercase"
+        >
+          services
+        </h2>
 
         {/* Keyed by panel and by opening, so each one starts fresh: scrolled to the top, with an
             empty contact form */}
@@ -277,37 +285,31 @@ function Index() {
           key={`${panel}-${visit}`}
           className="mt-2.5 flex-1 overflow-y-auto text-xs sm:text-sm leading-relaxed text-foreground"
         >
-          {panel === "about" && (
-            <div className="space-y-2.5 sm:space-y-3.5">
-              <p>
-                We are a Portland based design &amp; build studio focused on developing custom
-                outdoor living spaces.
-              </p>
-              <p className="font-display text-olive">Licensed · Bonded · Insured</p>
-            </div>
-          )}
+          <div hidden={panel !== "about"} className="space-y-2.5 sm:space-y-3.5">
+            <p>
+              We are a Portland based design &amp; build studio focused on developing custom outdoor
+              living spaces.
+            </p>
+            <p className="font-display text-olive">Licensed · Bonded · Insured</p>
+          </div>
 
-          {panel === "services" && (
-            // Fixed at 12px on every screen size to keep scrolling to a minimum
-            <ul className="space-y-3 text-xs leading-normal">
-              {services.map(([t, items]) => (
-                <li key={t}>
-                  <p className="font-display text-sm font-medium tracking-wide text-primary">{t}</p>
-                  <ul className="mt-0.5 list-disc pl-4 marker:text-olive">
-                    {items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-            </ul>
-          )}
+          {/* Fixed at 12px on every screen size to keep scrolling to a minimum */}
+          <ul hidden={panel !== "services"} className="space-y-3 text-xs leading-normal">
+            {services.map(([t, items]) => (
+              <li key={t}>
+                <h3 className="font-display text-sm font-medium tracking-wide text-primary">{t}</h3>
+                <ul className="mt-0.5 list-disc pl-4 marker:text-olive">
+                  {items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
 
-          {panel === "contact" && (
-            <div className="pt-5.5">
-              <ContactForm onClose={() => setOpen(null)} />
-            </div>
-          )}
+          <div hidden={panel !== "contact"} className="pt-5.5">
+            <ContactForm onClose={() => setOpen(null)} />
+          </div>
         </div>
 
         {(panel === "about" || panel === "services") && (
