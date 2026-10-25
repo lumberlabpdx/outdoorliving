@@ -82,13 +82,12 @@ export const services: [string, string[]][] = [
   [
     "Patios & Landscaping",
     [
-      "Concrete, paver & flagstone patios",
-      "Walkways, garden paths & outdoor steps",
-      "Retaining walls & seat walls",
-      "Ponds & waterfalls",
+      "Stamped concrete patios & walkways",
+      "Garden paths & walkways",
+      "Retaining walls & terracing",
+      "Water features (ponds, waterfalls, etc.)",
       "Raised garden beds & planters",
-      "Planting & privacy hedges",
-      "Irrigation & sprinkler systems",
+      "Privacy hedges",
       "Landscape, path & deck lighting",
     ],
   ],
@@ -109,11 +108,11 @@ export const services: [string, string[]][] = [
     ],
   ],
   [
-    "Hot Tubs & Saunas",
-    ["Hot tub decks & surrounds", "Backyard saunas", "Cold plunges & outdoor showers"],
+    "Spa Features",
+    ["Hot tub pads and enclosures", "Custom built or kit saunas", "Cold plunges & outdoor showers"],
   ],
   [
-    "Fire Pits & Outdoor Kitchens",
+    "Kitchens & Fire Features",
     [
       "Fire pits & fire tables",
       "Outdoor fireplaces",
@@ -123,12 +122,13 @@ export const services: [string, string[]][] = [
     ],
   ],
   [
-    "Backyard Offices, Sheds & Treehouses",
+    "Backyard Structures",
     [
       "Backyard offices & studios",
       "Garden, storage & potting sheds",
       "Greenhouses",
       "Detached garages & carports",
+      "ADUs",
       "Treehouses",
     ],
   ],

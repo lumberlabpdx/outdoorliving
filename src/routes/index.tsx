@@ -293,22 +293,22 @@ function Index() {
           >
             <p>
               When the mornings chill and the clouds gray and the leaves fall and the rains pour, we
-              want you to have an outdoor space that’s as accessible and enjoyable in December as it
-              is in July. With the Northwest’s autumns &amp; winters in mind, we focus on designing
-              covered outdoor spaces that are comfortable for you and your family any time of year.
+              want you to have an outdoor space that’s as enjoyable in December as it is in July.
+              With the Northwest’s autumns &amp; winters in mind, we focus on designing covered
+              outdoor spaces that are comfortable for you and your family any time of year.
             </p>
             <p>
               With 25+ years in Portland and 20+ years of carpentry experience, we have homegrown
-              knowledge of the climate and surroundings, and we build with that in mind. We often
-              get calls for covered patios &amp; decks, awnings, pergolas, gazebos, and even
-              treehouses. We can do it all.
+              knowledge of the Pacific Northwest, and we build with that in mind. We often get calls
+              for covered patios &amp; decks, awnings, pergolas, gazebos, and even treehouses. We
+              can do it all.
             </p>
             <p>
-              We also build backyard sheds, greenhouses, carports, detached garages, and more.
-              Design consultations, project estimates, and troubleshooting are always free, so reach
-              out with any questions. We’d love to help.
+              We also build sheds, greenhouses, carports, detached garages, and more. Design
+              consultations, project estimates, and troubleshooting are always free, so reach out
+              with any questions. We’d love to help.
             </p>
-            <p>Made with love by Dom.</p>
+            <p>A labor of love by Dom.</p>
             <p className="font-display text-olive">Licensed · Bonded · Insured</p>
           </div>
 
