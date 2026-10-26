@@ -73,8 +73,8 @@ export const services: [string, string[]][] = [
     [
       "Cedar, hardwood & composite decks",
       "Multi-level, hillside & rooftop decks",
-      "Deck stairs, landings & built-in benches",
-      "Cable, glass & metal deck railings",
+      "Stairs, landings & built-in benches",
+      "Cable, glass & metal railings",
       "Deck repair, resurfacing & replacement",
       "Under-deck drainage",
     ],
@@ -82,7 +82,7 @@ export const services: [string, string[]][] = [
   [
     "Patios & Landscaping",
     [
-      "Stamped concrete patios & walkways",
+      "Stamped concrete patios",
       "Garden paths & walkways",
       "Retaining walls & terracing",
       "Water features (ponds, waterfalls, etc.)",
@@ -91,31 +91,26 @@ export const services: [string, string[]][] = [
       "Landscape, path & deck lighting",
     ],
   ],
-  [
-    "Fences & Gates",
-    ["Cedar & wood privacy fences", "Gates & gate repair", "Fence repair & replacement"],
-  ],
+  ["Fences & Gates", ["Cedar privacy fences & gates", "Fence & gate repair or replacement"]],
   [
     "Pergolas, Patio Covers & Awnings",
     [
       "Wood & louvered pergolas",
       "Pergola roofs & covers",
-      "Patio covers & covered patios",
-      "Lean-to patio covers & awnings",
+      "Patio covers, lean-tos & awnings",
       "Pavilions & gazebos",
       "Arbors, trellises & privacy screens",
-      "Patio heaters, fans, string lights & shades",
+      "Heaters, fans, string lights & shades",
     ],
   ],
   [
     "Spa Features",
-    ["Hot tub pads and enclosures", "Custom built or kit saunas", "Cold plunges & outdoor showers"],
+    ["Hot tub pads & enclosures", "Custom-built or kit saunas", "Cold plunges & outdoor showers"],
   ],
   [
     "Kitchens & Fire Features",
     [
-      "Fire pits & fire tables",
-      "Outdoor fireplaces",
+      "Fire pits, fire tables & outdoor fireplaces",
       "Outdoor kitchens & built-in grills",
       "Pizza ovens & smokers",
       "Outdoor bars & dining areas",
