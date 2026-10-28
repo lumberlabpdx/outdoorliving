@@ -245,7 +245,7 @@ function Index() {
 
         {/* All three panels stay in the page so search engines can read them, and the ones not
             being shown are hidden. Before the drawer first opens, all three are */}
-        {/* The wrapper adds no box of its own, so the logo and rule sit in the drawer as before */}
+        {/* The wrapper adds no box of its own, so the logo sits in the drawer as before */}
         <div hidden={panel !== "about"} className="contents">
           {/* Lazy, so the logo still loads only once About is opened */}
           <img
@@ -256,7 +256,6 @@ function Index() {
             loading="lazy"
             className="mx-auto mt-1 h-36 w-auto max-h-[36vh] md:h-52 object-contain"
           />
-          <span className="mx-auto mt-2 h-px w-16 bg-primary" />
         </div>
 
         {/* Heading on the left, close button on the right in the same row

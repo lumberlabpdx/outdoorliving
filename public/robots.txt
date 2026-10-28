@@ -1,2 +1,3 @@
+# Blocks all crawlers until launch. Change back to "Allow: /" when the site goes live
 User-agent: *
-Allow: /
+Disallow: /
